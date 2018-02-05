@@ -14,6 +14,7 @@ public class Vanilla extends JavaPlugin
     private Config config;
     private RedConfig configSettings;
 
+    @Override
     public void onEnable()
     {
         config = new Config(this);
@@ -28,6 +29,7 @@ public class Vanilla extends JavaPlugin
         getCommand("note").setExecutor(new NotesCommand(this));
     }
 
+    @Override
     public void onDisable()
     {
         config.saveSettings();
