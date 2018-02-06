@@ -22,4 +22,14 @@ public class Utils
     {
         Bukkit.broadcastMessage(Utils.color("&8[&4BugTest&8]" + "&7 " + message));
     }
+
+    public static String buildMessage(String[] parts, int start)
+    {
+        StringBuilder note = new StringBuilder();
+        for(int count = start; count < parts.length; count++)
+        {
+            note.append(parts[count] + " ");
+        }
+        return note.toString();
+    }
 }

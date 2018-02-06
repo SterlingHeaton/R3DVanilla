@@ -44,7 +44,7 @@ public class PrivateMessageCommand implements CommandExecutor
                 return false;
             }
 
-            String message = buildMessage(args, 1);
+            String message = Utils.buildMessage(args, 1);
 
             if(player == targetPlayer)
             {
@@ -87,7 +87,7 @@ public class PrivateMessageCommand implements CommandExecutor
                 return false;
             }
 
-            String message = buildMessage(args, 0);
+            String message = Utils.buildMessage(args, 0);
 
             sendMessages(player, targetPlayer, message);
         }
@@ -106,15 +106,5 @@ public class PrivateMessageCommand implements CommandExecutor
         {
             targetPlayer.playSound(targetPlayer.getLocation(), Sound.BLOCK_NOTE_BELL, 2, 2);
         }
-    }
-
-    private String buildMessage(String[] parts, int start)
-    {
-        StringBuilder note = new StringBuilder();
-        for(int count = start; count < parts.length; count++)
-        {
-            note.append(parts[count] + " ");
-        }
-        return note.toString();
     }
 }
