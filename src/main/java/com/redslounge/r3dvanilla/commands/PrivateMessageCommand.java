@@ -50,6 +50,7 @@ public class PrivateMessageCommand implements CommandExecutor
             {
                 player.sendMessage(Utils.color("&aSelf Note&6: &7&o" + message));
                 player.sendMessage(Utils.color("&aUse &7&o/note add <note> &afor long term storage."));
+                return false;
             }
 
             sendMessages(player, targetPlayer, message);

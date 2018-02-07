@@ -5,6 +5,7 @@ import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +52,9 @@ public class Config
             createSettings = true;
         }
 
+        configMain = YamlConfiguration.loadConfiguration(configFileMain);
+        configPlayer = YamlConfiguration.loadConfiguration(configFilePlayer);
+
         if(createSettings)
         {
             createSettings();
@@ -64,6 +68,9 @@ public class Config
     private void createSettings()
     {
         plugin.setConfigSettings(new RedConfig(10, false));
+
+        getConfigMain().set(".noteLimit", 10);
+        getConfigMain().set(".messagePing", false);
 
         try
         {

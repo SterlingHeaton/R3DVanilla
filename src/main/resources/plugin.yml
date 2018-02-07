@@ -1,0 +1,16 @@
+name: R3DVanilla
+main: com.redslounge.r3dvanilla.main.Vanilla
+version: 3.0
+author: Sterling (Redstonehax)
+description: Essential "addons" for vanilla SMP
+commands:
+  afk:
+    description: Mark yourself as afk.
+  message:
+    description: Private message others on the server.
+    aliases: [m, msg, tell, w]
+  reply:
+    description: Private message the last person who messaged you.
+    aliases: [r]
+  note:
+    description: Add in-game notes to your server.

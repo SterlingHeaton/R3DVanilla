@@ -42,7 +42,7 @@ public class AfkCommand implements CommandExecutor
             {
                 plugin.getConfigSettings().getPlayer(player.getUniqueId()).setAfk(true);
                 Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois now AFK"));
-                player.setPlayerListName(Utils.color("&7* &o" + player.getName()));
+                player.setPlayerListName(Utils.color("&7(afk) &o" + player.getName()));
             }
         }
         return false;
