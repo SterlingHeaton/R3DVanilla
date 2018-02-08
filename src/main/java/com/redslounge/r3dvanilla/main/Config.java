@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,13 +91,13 @@ public class Config
         for(String playerStringID : section.getKeys(false))
         {
             UUID playerID = UUID.fromString(playerStringID);
-            String playerName = Bukkit.getPlayer(playerID).getName();
+            Player player = Bukkit.getPlayer(playerID);
             boolean messagePing = getConfigPlayers().getBoolean(playerID + ".messagePing");
             List<String> notes = new ArrayList<String>(getConfigPlayers().getStringList(playerID + ".notes"));
 
-            RedPlayer player = new RedPlayer(playerID, playerName, messagePing, notes);
+            RedPlayer playerInformation = new RedPlayer(playerID, player.getName(), messagePing, notes);
 
-            plugin.getConfigSettings().addPlayer(playerID, player);
+            plugin.getConfigSettings().addPlayer(playerID, playerInformation);
         }
     }
 
@@ -106,6 +107,15 @@ public class Config
         {
             getConfigPlayers().set(playerID + ".notes", plugin.getConfigSettings().getPlayer(playerID).getNotes());
             getConfigPlayers().set(playerID + ".messagePing", plugin.getConfigSettings().getPlayer(playerID).isMessagePing());
+        }
+
+        try
+        {
+            getConfigPlayers().save(configFilePlayer);
+        }
+        catch(IOException e)
+        {
+            System.out.println(Utils.color("&cSomething went wrong while trying to save the player file."));
         }
     }
 

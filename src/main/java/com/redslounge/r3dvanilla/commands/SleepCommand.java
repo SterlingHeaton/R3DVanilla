@@ -8,6 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 public class SleepCommand implements CommandExecutor
 {
     private Vanilla plugin;
@@ -35,7 +37,7 @@ public class SleepCommand implements CommandExecutor
                 return false;
             }
 
-            for(Player sleepingPlayer : plugin.getConfigSettings().getSleepingPlayers())
+            for(Player sleepingPlayer : new ArrayList<Player>(plugin.getConfigSettings().getSleepingPlayers()))
             {
                 if(sleepingPlayer.getGameMode() != GameMode.SURVIVAL)
                 {
@@ -55,7 +57,6 @@ public class SleepCommand implements CommandExecutor
 
             plugin.getConfigSettings().getSleepingPlayers().clear();
         }
-
         return false;
     }
 }
