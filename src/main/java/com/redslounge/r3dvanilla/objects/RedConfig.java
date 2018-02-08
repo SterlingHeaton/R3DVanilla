@@ -1,5 +1,7 @@
 package com.redslounge.r3dvanilla.objects;
 
+import org.bukkit.entity.Player;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -10,6 +12,7 @@ public class RedConfig
     private int noteLimit;
     private boolean messagePing;
     private HashMap<UUID, RedPlayer> players = new HashMap<UUID, RedPlayer>();
+    private ArrayList<Player> sleepingPlayers = new ArrayList<Player>();
 
     public RedConfig(int noteLimit, boolean messagePing)
     {
@@ -17,19 +20,9 @@ public class RedConfig
         this.messagePing = messagePing;
     }
 
-    public void setNoteLimit(int noteLimit)
-    {
-        this.noteLimit = noteLimit;
-    }
-
     public int getNoteLimit()
     {
         return noteLimit;
-    }
-
-    public void setMessagePing(boolean messagePing)
-    {
-        this.messagePing = messagePing;
     }
 
     public boolean isMessagePing()
@@ -50,5 +43,15 @@ public class RedConfig
     public void addPlayer(UUID playerID, RedPlayer player)
     {
         players.put(playerID, player);
+    }
+
+    public ArrayList<Player> getSleepingPlayers()
+    {
+        return sleepingPlayers;
+    }
+
+    public void addSleepingPlayer(Player player)
+    {
+        sleepingPlayers.add(player);
     }
 }

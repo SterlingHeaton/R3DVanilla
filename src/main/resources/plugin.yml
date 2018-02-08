@@ -14,3 +14,5 @@ commands:
     aliases: [r]
   note:
     description: Add in-game notes to your server.
+  cancelsleep:
+    description: Used for single player sleep.
