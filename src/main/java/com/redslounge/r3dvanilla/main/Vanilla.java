@@ -31,6 +31,8 @@ public class Vanilla extends JavaPlugin
         getCommand("reply").setExecutor(new PrivateMessageCommand(this));
         getCommand("note").setExecutor(new NotesCommand(this));
         getCommand("cancelsleep").setExecutor(new SleepCommand(this));
+        getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
+
     }
 
     @Override
@@ -48,6 +50,4 @@ public class Vanilla extends JavaPlugin
     {
         return configSettings;
     }
-
-
 }

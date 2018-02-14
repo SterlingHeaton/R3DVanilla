@@ -30,7 +30,7 @@ public class AddNewPlayer implements Listener
             return;
         }
 
-        RedPlayer player = new RedPlayer(playerID, event.getPlayer().getName(), plugin.getConfigSettings().isMessagePing(), new ArrayList<String>());
+        RedPlayer player = new RedPlayer(plugin.getConfigSettings().isMessagePing(), new ArrayList<String>());
 
         plugin.getConfigSettings().addPlayer(playerID, player);
     }

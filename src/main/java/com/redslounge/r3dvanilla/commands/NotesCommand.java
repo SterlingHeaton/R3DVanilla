@@ -88,6 +88,12 @@ public class NotesCommand implements CommandExecutor
 
         RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(player.getUniqueId());
 
+        if(args.length < 2)
+        {
+            player.sendMessage(Utils.color(Utils.syntax + "/note del <number of note|all>"));
+            return;
+        }
+
         if(args[1].equalsIgnoreCase("all"))
         {
             playerInformation.getNotes().clear();
@@ -119,9 +125,15 @@ public class NotesCommand implements CommandExecutor
 
         RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(player.getUniqueId());
 
+        if(args.length < 2)
+        {
+            player.sendMessage(Utils.color(Utils.syntax + "/note replace <number of note> <note>"));
+            return;
+        }
+
         if(!checkIfNumber(args[1]))
         {
-            player.sendMessage(Utils.color(Utils.syntax + "/note del <number of note|all>"));
+            player.sendMessage(Utils.color(Utils.syntax + "/note replace <number of note> <note>"));
             return;
         }
 
@@ -156,8 +168,10 @@ public class NotesCommand implements CommandExecutor
         if(playerInformation.getNotes().size() == 0)
         {
             player.sendMessage(Utils.color("&cYou don't have any notes! &7&o/note add <note>"));
+            return;
         }
 
+        player.sendMessage(Utils.color("&6Personal Notes:"));
         for(int count = 0; count < playerInformation.getNotes().size(); count++)
         {
             player.sendMessage(Utils.color("&a" + (count+1) + "&6. &7&o" + playerInformation.getNotes().get(count)));

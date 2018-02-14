@@ -6,28 +6,15 @@ import java.util.UUID;
 
 public class RedPlayer
 {
-    private UUID uuid;
-    private String name;
     private boolean afk;
     private boolean messagePing;
     private UUID uuidLastMessage;
-    private List<String> notes = new ArrayList<String>();
+    private List<String> notes;
 
-    public RedPlayer(UUID uuid, String name, boolean messagePing, List<String> notes)
+    public RedPlayer(boolean messagePing, List<String> notes)
     {
-        this.uuid = uuid;
-        this.name = name;
+        this.messagePing = messagePing;
         this.notes = notes;
-    }
-
-    public UUID getUuid()
-    {
-        return uuid;
-    }
-
-    public String getName()
-    {
-        return name;
     }
 
     public boolean isAfk()

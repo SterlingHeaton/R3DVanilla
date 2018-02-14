@@ -92,6 +92,28 @@ public class PrivateMessageCommand implements CommandExecutor
 
             sendMessages(player, targetPlayer, message);
         }
+
+        if(command.getName().equalsIgnoreCase("messageping"))
+        {
+            if(!(sender instanceof Player))
+            {
+                sender.sendMessage(Utils.color(Utils.inGame));
+            }
+
+            Player player = (Player) sender;
+            RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(player.getUniqueId());
+
+            if(playerInformation.isMessagePing())
+            {
+                playerInformation.setMessagePing(false);
+                player.sendMessage(Utils.color("&aYou have &4&lDISABLED &ayour message ping."));
+            }
+            else
+            {
+                playerInformation.setMessagePing(true);
+                player.sendMessage(Utils.color("&aYou have &2&lENABLED &ayour message ping."));
+            }
+        }
         return false;
     }
 

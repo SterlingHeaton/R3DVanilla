@@ -3,6 +3,7 @@ package com.redslounge.r3dvanilla.main;
 import com.redslounge.r3dvanilla.objects.RedConfig;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -68,10 +69,10 @@ public class Config
 
     private void createSettings()
     {
-        plugin.setConfigSettings(new RedConfig(10, false));
+        plugin.setConfigSettings(new RedConfig(10, true));
 
         getConfigMain().set(".noteLimit", 10);
-        getConfigMain().set(".messagePing", false);
+        getConfigMain().set(".messagePing", true);
 
         try
         {
@@ -91,11 +92,10 @@ public class Config
         for(String playerStringID : section.getKeys(false))
         {
             UUID playerID = UUID.fromString(playerStringID);
-            Player player = Bukkit.getPlayer(playerID);
             boolean messagePing = getConfigPlayers().getBoolean(playerID + ".messagePing");
             List<String> notes = new ArrayList<String>(getConfigPlayers().getStringList(playerID + ".notes"));
 
-            RedPlayer playerInformation = new RedPlayer(playerID, player.getName(), messagePing, notes);
+            RedPlayer playerInformation = new RedPlayer(messagePing, notes);
 
             plugin.getConfigSettings().addPlayer(playerID, playerInformation);
         }

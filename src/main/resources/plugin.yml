@@ -16,3 +16,5 @@ commands:
     description: Add in-game notes to your server.
   cancelsleep:
     description: Used for single player sleep.
+  messageping:
+    description: Toggle the cute noise when someone messages you.
