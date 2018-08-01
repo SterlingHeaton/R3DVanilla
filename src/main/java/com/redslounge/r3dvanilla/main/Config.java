@@ -2,17 +2,13 @@ package com.redslounge.r3dvanilla.main;
 
 import com.redslounge.r3dvanilla.objects.RedConfig;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -69,10 +65,13 @@ public class Config
 
     private void createSettings()
     {
-        plugin.setConfigSettings(new RedConfig(10, true));
+        plugin.setConfigSettings(new RedConfig(10, true, 300, 51, 300));
 
         getConfigMain().set(".noteLimit", 10);
         getConfigMain().set(".messagePing", true);
+        getConfigMain().set(".sleepCooldown", 300);
+        getConfigMain().set(".sleepPercent", 51);
+        getConfigMain().set(".afkTimer", 300);
 
         try
         {
@@ -86,14 +85,14 @@ public class Config
 
     private void loadSettings()
     {
-        plugin.setConfigSettings(new RedConfig(getConfigMain().getInt("noteLimit"), getConfigMain().getBoolean("messagePing")));
+        plugin.setConfigSettings(new RedConfig(getConfigMain().getInt("noteLimit"), getConfigMain().getBoolean("messagePing"), getConfigMain().getInt("sleepCooldown"), getConfigMain().getInt("sleepPercent"), getConfigMain().getInt("afkTimer")));
 
         ConfigurationSection section = getConfigPlayers().getConfigurationSection("");
         for(String playerStringID : section.getKeys(false))
         {
             UUID playerID = UUID.fromString(playerStringID);
             boolean messagePing = getConfigPlayers().getBoolean(playerID + ".messagePing");
-            List<String> notes = new ArrayList<String>(getConfigPlayers().getStringList(playerID + ".notes"));
+            List<String> notes = new ArrayList<>(getConfigPlayers().getStringList(playerID + ".notes"));
 
             RedPlayer playerInformation = new RedPlayer(messagePing, notes);
 

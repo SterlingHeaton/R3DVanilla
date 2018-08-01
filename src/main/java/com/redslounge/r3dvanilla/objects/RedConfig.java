@@ -11,13 +11,20 @@ public class RedConfig
 {
     private int noteLimit;
     private boolean messagePing;
-    private HashMap<UUID, RedPlayer> players = new HashMap<UUID, RedPlayer>();
-    private ArrayList<Player> sleepingPlayers = new ArrayList<Player>();
+    private int sleepCooldown;
+    private int sleepPercent;
+    private int afkTimer;
+    private HashMap<UUID, RedPlayer> players = new HashMap<>();
+    private ArrayList<Player> sleepingPlayers = new ArrayList<>();
+    private ArrayList<Player> afkPlayers = new ArrayList<>();
 
-    public RedConfig(int noteLimit, boolean messagePing)
+    public RedConfig(int noteLimit, boolean messagePing, int sleepCooldown, int sleepPercent, int afkTimer)
     {
         this.noteLimit = noteLimit;
         this.messagePing = messagePing;
+        this.sleepCooldown = sleepCooldown;
+        this.sleepPercent = sleepPercent;
+        this.afkTimer = afkTimer;
     }
 
     public int getNoteLimit()
@@ -54,4 +61,30 @@ public class RedConfig
     {
         sleepingPlayers.add(player);
     }
+
+    public void addAfkPlayer(Player player)
+    {
+        afkPlayers.add(player);
+    }
+
+    public ArrayList<Player> getAfkPlayers()
+    {
+        return afkPlayers;
+    }
+
+    public int getSleepCooldown()
+    {
+        return sleepCooldown;
+    }
+
+    public int getSleepPercent()
+    {
+        return sleepPercent;
+    }
+
+    public int getAfkTimer()
+    {
+        return afkTimer;
+    }
+
 }

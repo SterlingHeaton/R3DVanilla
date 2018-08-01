@@ -1,13 +1,13 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.main.Utils;
 import com.redslounge.r3dvanilla.main.Vanilla;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
@@ -22,30 +22,65 @@ public class AfkEvents implements Listener
     }
 
     @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event)
+    {
+        Player player = event.getPlayer();
+        RedPlayer playerInfo = plugin.getConfigSettings().getPlayer(player.getUniqueId());
+
+        handlePlyaer(player, playerInfo, true);
+    }
+
+    @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event)
     {
         Player player = event.getPlayer();
-        UUID playerID = player.getUniqueId();
-        RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(playerID);
+        RedPlayer playerInfo = plugin.getConfigSettings().getPlayer(player.getUniqueId());
 
-        if(playerInformation.isAfk())
-        {
-            plugin.getConfigSettings().getPlayer(playerID).setAfk(false);
-            Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois no longer AFK"));
-            player.setPlayerListName(player.getName());
-        }
+        handlePlyaer(player, playerInfo, true);
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event)
+    {
+        Player player = event.getPlayer();
+        RedPlayer playerInfo = plugin.getConfigSettings().getPlayer(player.getUniqueId());
+
+        handlePlyaer(player, playerInfo, true);
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event)
     {
         Player player = event.getPlayer();
-        UUID playerID = player.getUniqueId();
-        RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(playerID);
+        RedPlayer playerInfo = plugin.getConfigSettings().getPlayer(player.getUniqueId());
 
-        if(playerInformation.isAfk())
+        handlePlyaer(player, playerInfo, false);
+    }
+
+    public void handlePlyaer(Player player, RedPlayer playerInfo, boolean leavueMessage)
+    {
+        if(playerInfo.getAfkId() == -1)
         {
-            plugin.getConfigSettings().getPlayer(playerID).setAfk(false);
+            return;
+        }
+
+        if(plugin.getServer().getScheduler().isQueued(playerInfo.getAfkId()))
+        {
+            plugin.getServer().getScheduler().cancelTask(playerInfo.getAfkId());
+            playerInfo.setAfkId(-1);
+            return;
+        }
+
+        if(plugin.getServer().getScheduler().isCurrentlyRunning(playerInfo.getAfkId()))
+        {
+            plugin.getAfkTasks().setPlayerUnafk(player, playerInfo, leavueMessage);
+            return;
+        }
+
+        if(playerInfo.isAfk())
+        {
+            plugin.getAfkTasks().setPlayerUnafk(player, playerInfo, leavueMessage);
+            return;
         }
     }
 }

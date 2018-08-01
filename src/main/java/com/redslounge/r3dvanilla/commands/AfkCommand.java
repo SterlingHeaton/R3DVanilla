@@ -7,13 +7,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
-public class AfkCommand implements CommandExecutor
+public class AfkCommand implements CommandExecutor, TabCompleter
 {
-    Vanilla plugin;
+    private Vanilla plugin;
 
     public AfkCommand(Vanilla pl)
     {
@@ -30,21 +33,23 @@ public class AfkCommand implements CommandExecutor
             }
 
             Player player = (Player) sender;
-            RedPlayer playerInformation = plugin.getConfigSettings().getPlayer(player.getUniqueId());
+            RedPlayer playerInfo = plugin.getConfigSettings().getPlayer(player.getUniqueId());
 
-            if(playerInformation.isAfk())
+            if(playerInfo.isAfk())
             {
-                plugin.getConfigSettings().getPlayer(player.getUniqueId()).setAfk(false);
-                Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois no longer AFK"));
-                player.setPlayerListName(player.getName());
+                plugin.getAfkTasks().setPlayerUnafk(player, playerInfo, true);
             }
             else
             {
-                plugin.getConfigSettings().getPlayer(player.getUniqueId()).setAfk(true);
-                Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois now AFK"));
-                player.setPlayerListName(Utils.color("&7(afk) &o" + player.getName()));
+                plugin.getAfkTasks().setPlayerAFK(player, playerInfo);
             }
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings)
+    {
+        return new ArrayList<>();
     }
 }

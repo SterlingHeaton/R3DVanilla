@@ -7,15 +7,12 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerBedLeaveEvent;
-
-import static org.bukkit.ChatColor.*;
 
 public class SleepingEvent implements Listener
 {
@@ -29,61 +26,81 @@ public class SleepingEvent implements Listener
     @EventHandler
     private void onPlayerSleep(PlayerBedEnterEvent event)
     {
-        World world = event.getPlayer().getWorld();
+        final World WORLD = event.getPlayer().getWorld();
 
-        if(world.getEnvironment() != World.Environment.NORMAL)
+        Player player = event.getPlayer();
+
+        if(WORLD.getEnvironment() != World.Environment.NORMAL)
         {
             return;
         }
 
-        plugin.getConfigSettings().addSleepingPlayer(event.getPlayer());
+        plugin.getConfigSettings().addSleepingPlayer(player);
 
-        for(Player player : plugin.getServer().getOnlinePlayers())
+        if(plugin.getSleepingCooldown())
         {
-            player.spigot().sendMessage(buildInteractiveMessage(event.getPlayer().getName()));
+            int percentage = calculatePercentage();
+
+            if(percentage >= plugin.getConfigSettings().getSleepPercent())
+            {
+                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&a" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
+
+                plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
+                {
+                    setDay(WORLD);
+                }, 20 * 5);
+            }
+            else
+            {
+                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&c" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
+
+            }
+            return;
         }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable()
+        plugin.getServer().spigot().broadcast(buildInteractiveMessage(player.getName()));
+
+        plugin.setSleeping(plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
         {
-           public void run()
-           {
-               if(world.isThundering())
-               {
-                   world.setStorm(false);
-               }
-
-               if(world.hasStorm())
-               {
-                   world.setStorm(false);
-               }
-
-               world.setFullTime(world.getFullTime() + (24000 - world.getTime()));
-           }
-        }, 20 * 7);
+            setDay(WORLD);
+        }, 20 * 10));
     }
 
     @EventHandler
     private void onPlayerExitBed(PlayerBedLeaveEvent event)
     {
-        World world = event.getPlayer().getWorld();
+        Player player = event.getPlayer();
 
-        if(world.getEnvironment() != World.Environment.NORMAL)
+        plugin.getConfigSettings().getSleepingPlayers().remove(player);
+    }
+
+    private void setDay(World world)
+    {
+        world.setFullTime(world.getFullTime() + (24000 - world.getTime()));
+
+        if(world.isThundering())
         {
-            return;
+            world.setThundering(false);
         }
 
-        plugin.getConfigSettings().getSleepingPlayers().remove(event.getPlayer());
-
-        if(plugin.getConfigSettings().getSleepingPlayers().isEmpty())
+        if(world.hasStorm())
         {
-            Bukkit.getScheduler().cancelAllTasks();
+            world.setStorm(false);
         }
+    }
+
+    private int calculatePercentage()
+    {
+        int total = plugin.getServer().getOnlinePlayers().size() - plugin.getConfigSettings().getAfkPlayers().size();
+        int playersSleeping = plugin.getConfigSettings().getSleepingPlayers().size();
+
+        return (playersSleeping * 100) / total;
     }
 
     private TextComponent buildInteractiveMessage(String playerName)
     {
         TextComponent message = new TextComponent(Utils.color(playerName + " &7&ois now sleeping. " + "&c[CANCEL]"));
-        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me to keep the kingdom from sleeping.").color(ChatColor.RED).create()));
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me to keep it night time and enable majority vote.").color(ChatColor.RED).create()));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cancelsleep"));
 
         return message;

@@ -1,13 +1,7 @@
 package com.redslounge.r3dvanilla.main;
 
-import com.redslounge.r3dvanilla.commands.AfkCommand;
-import com.redslounge.r3dvanilla.commands.NotesCommand;
-import com.redslounge.r3dvanilla.commands.PrivateMessageCommand;
-import com.redslounge.r3dvanilla.commands.SleepCommand;
-import com.redslounge.r3dvanilla.events.AddNewPlayer;
-import com.redslounge.r3dvanilla.events.AfkEvents;
-import com.redslounge.r3dvanilla.events.EndermanEvent;
-import com.redslounge.r3dvanilla.events.SleepingEvent;
+import com.redslounge.r3dvanilla.commands.*;
+import com.redslounge.r3dvanilla.events.*;
 import com.redslounge.r3dvanilla.objects.RedConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,6 +9,9 @@ public class Vanilla extends JavaPlugin
 {
     private Config config;
     private RedConfig configSettings;
+    private AfkTasks afkTasks;
+    private boolean sleepingCooldown;
+    private int sleeping;
 
     @Override
     public void onEnable()
@@ -30,9 +27,12 @@ public class Vanilla extends JavaPlugin
         getCommand("message").setExecutor(new PrivateMessageCommand(this));
         getCommand("reply").setExecutor(new PrivateMessageCommand(this));
         getCommand("note").setExecutor(new NotesCommand(this));
+        getCommand("notes").setExecutor(new NotesCommand(this));
         getCommand("cancelsleep").setExecutor(new SleepCommand(this));
         getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
+        getCommand("bugreport").setExecutor(new BugReport(this));
 
+        afkTasks = new AfkTasks(this);
     }
 
     @Override
@@ -49,5 +49,30 @@ public class Vanilla extends JavaPlugin
     public RedConfig getConfigSettings()
     {
         return configSettings;
+    }
+
+    public AfkTasks getAfkTasks()
+    {
+        return afkTasks;
+    }
+
+    public boolean getSleepingCooldown()
+    {
+        return sleepingCooldown;
+    }
+
+    public void setSleepingCooldown(boolean sleepingCooldown)
+    {
+        this.sleepingCooldown = sleepingCooldown;
+    }
+
+    public int getSleeping()
+    {
+        return sleeping;
+    }
+
+    public void setSleeping(int sleeping)
+    {
+        this.sleeping = sleeping;
     }
 }

@@ -7,9 +7,13 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class PrivateMessageCommand implements CommandExecutor
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrivateMessageCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
@@ -127,7 +131,39 @@ public class PrivateMessageCommand implements CommandExecutor
 
         if(targetPlayerInformation.isMessagePing())
         {
-            targetPlayer.playSound(targetPlayer.getLocation(), Sound.BLOCK_NOTE_BELL, 2, 2);
+            targetPlayer.playSound(targetPlayer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 2, 2);
         }
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args)
+    {
+        if(command.getName().equalsIgnoreCase("message"))
+        {
+            List<String> list = new ArrayList<String>();
+
+            if(args.length == 1)
+            {
+                for(Player player : plugin.getServer().getOnlinePlayers())
+                {
+                    list.add(player.getName());
+                }
+
+                return list;
+            }
+            return list;
+        }
+
+        if(command.getName().equalsIgnoreCase("reply"))
+        {
+            return new ArrayList<String>();
+        }
+
+        if(command.getName().equalsIgnoreCase("messageping"))
+        {
+            return new ArrayList<String>();
+        }
+
+        return new ArrayList<String>();
     }
 }

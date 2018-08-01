@@ -1,14 +1,12 @@
 package com.redslounge.r3dvanilla.events;
 
 import com.redslounge.r3dvanilla.main.Vanilla;
-import com.redslounge.r3dvanilla.objects.RedConfig;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class AddNewPlayer implements Listener

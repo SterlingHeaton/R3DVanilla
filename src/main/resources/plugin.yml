@@ -1,6 +1,6 @@
 name: R3DVanilla
 main: com.redslounge.r3dvanilla.main.Vanilla
-version: 3.0
+version: 1.1
 author: Sterling (Redstonehax)
 description: Essential "addons" for vanilla SMP
 commands:
@@ -14,7 +14,12 @@ commands:
     aliases: [r]
   note:
     description: Add in-game notes to your server.
+  notes:
+    description: View all of your notes.
   cancelsleep:
     description: Used for single player sleep.
   messageping:
     description: Toggle the cute noise when someone messages you.
+  bugreport:
+    description: Send me your bug reports and feature requests!
+    aliases: [featurerequest]

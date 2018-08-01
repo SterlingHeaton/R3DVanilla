@@ -6,11 +6,13 @@ import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SleepCommand implements CommandExecutor
+public class SleepCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
@@ -31,32 +33,38 @@ public class SleepCommand implements CommandExecutor
 
             Player player = (Player) sender;
 
-            if(plugin.getConfigSettings().getSleepingPlayers().isEmpty())
+            if(plugin.getSleepingCooldown())
             {
-                player.sendMessage(Utils.color("&cNo one is currently sleeping."));
+                player.sendMessage(Utils.color("&cMajority vote is enabled, cant kick people out of bed."));
                 return false;
             }
 
-            for(Player sleepingPlayer : new ArrayList<Player>(plugin.getConfigSettings().getSleepingPlayers()))
+            plugin.setSleepingCooldown(true);
+            plugin.getServer().getScheduler().cancelTask(plugin.getSleeping());
+
+            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
             {
-                if(sleepingPlayer.getGameMode() != GameMode.SURVIVAL)
-                {
-                    GameMode originalGamemode = sleepingPlayer.getGameMode();
+                plugin.setSleepingCooldown(false);
+            }, 20 * plugin.getConfigSettings().getSleepCooldown());
 
-                    sleepingPlayer.setGameMode(GameMode.SURVIVAL);
-                    sleepingPlayer.damage(0);
-                    sleepingPlayer.setGameMode(originalGamemode);
-                }
-                else
-                {
-                    sleepingPlayer.damage(0);
-                }
+            for(int count = 0; count < plugin.getConfigSettings().getSleepingPlayers().size(); count++)
+            {
+                Player sleepingPlayer = plugin.getConfigSettings().getSleepingPlayers().get(0);
 
-                sleepingPlayer.sendMessage(Utils.color(player.getName() + " &7&owanted to pull an all nighter, so wake up!"));
+                GameMode originalGamemode = sleepingPlayer.getGameMode();
+                sleepingPlayer.setGameMode(GameMode.SURVIVAL);
+                sleepingPlayer.damage(0);
+                sleepingPlayer.setGameMode(originalGamemode);
+
+                sleepingPlayer.sendMessage(Utils.color(player.getName() + " &7&odoesn't want you sleeping, enabling majority vote."));
             }
-
-            plugin.getConfigSettings().getSleepingPlayers().clear();
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings)
+    {
+        return new ArrayList<>();
     }
 }

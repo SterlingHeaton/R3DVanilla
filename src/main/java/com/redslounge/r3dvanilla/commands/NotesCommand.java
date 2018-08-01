@@ -6,11 +6,13 @@ import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class NotesCommand implements CommandExecutor
+public class NotesCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
@@ -55,12 +57,25 @@ public class NotesCommand implements CommandExecutor
             }
             else if(args[0].equalsIgnoreCase("view"))
             {
-                viewNotes(player, args);
+                viewNotes(player);
             }
             else
             {
                 sender.sendMessage(Utils.color(Utils.syntax + "/note <add|del|replace|last|view>"));
             }
+        }
+
+        if(command.getName().equalsIgnoreCase("notes"))
+        {
+            if(!(sender instanceof Player))
+            {
+                sender.sendMessage(Utils.color(Utils.inGame));
+                return false;
+            }
+
+            Player player = (Player) sender;
+
+            viewNotes(player);
         }
         return false;
     }
@@ -159,7 +174,7 @@ public class NotesCommand implements CommandExecutor
         player.sendMessage(Utils.color("&aSuccessfully replaced your last note!"));
     }
 
-    private void viewNotes(Player player, String[] args)
+    private void viewNotes(Player player)
     {
         // /note view  --> Views all notes for the given player
 
@@ -198,5 +213,61 @@ public class NotesCommand implements CommandExecutor
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args)
+    {
+        if(!(commandSender instanceof  Player))
+        {
+            return null;
+        }
+
+        RedPlayer player = plugin.getConfigSettings().getPlayer(((Player) commandSender).getUniqueId());
+
+        List<String> list = new ArrayList<String>();
+
+        if(command.getName().equalsIgnoreCase("note"))
+        {
+            if(args.length == 1)
+            {
+                list.add("add");
+                list.add("del");
+                list.add("replace");
+                list.add("last");
+                list.add("view");
+
+                return list;
+            }
+
+            if(args.length == 2)
+            {
+                switch(args[0])
+                {
+                    case "add": return list;
+                    case "del": return generateNumberList(player);
+                    case "replace": return generateNumberList(player);
+                    case "last": return list;
+                    case "view": return list;
+                }
+            }
+        }
+
+        return new ArrayList<>();
+    }
+
+    public List<String> generateNumberList(RedPlayer player)
+    {
+        List<String> list = new ArrayList<String>();
+
+        for(int count = 0; count < player.getNotes().size(); count++)
+        {
+            String noteNumber = String.valueOf(count+1);
+
+            list.add(String.valueOf(noteNumber));
+        }
+        list.add("all");
+
+        return list;
     }
 }

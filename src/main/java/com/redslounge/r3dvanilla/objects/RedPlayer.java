@@ -1,6 +1,5 @@
 package com.redslounge.r3dvanilla.objects;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,6 +9,7 @@ public class RedPlayer
     private boolean messagePing;
     private UUID uuidLastMessage;
     private List<String> notes;
+    private int afkId;
 
     public RedPlayer(boolean messagePing, List<String> notes)
     {
@@ -55,5 +55,15 @@ public class RedPlayer
     public void addNote(String note)
     {
         notes.add(note);
+    }
+
+    public int getAfkId()
+    {
+        return afkId;
+    }
+
+    public void setAfkId(int afkId)
+    {
+        this.afkId = afkId;
     }
 }
