@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="R3DVanilla" />
+        <module name="r3dvanilla" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="R3DVanilla" target="1.8" />
+      <module name="r3dvanilla" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -18,9 +18,9 @@ public class AfkCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
-    public AfkCommand(Vanilla pl)
+    public AfkCommand(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)

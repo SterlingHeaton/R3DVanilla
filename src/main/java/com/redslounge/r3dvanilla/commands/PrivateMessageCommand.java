@@ -17,9 +17,9 @@ public class PrivateMessageCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
-    public PrivateMessageCommand(Vanilla pl)
+    public PrivateMessageCommand(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)

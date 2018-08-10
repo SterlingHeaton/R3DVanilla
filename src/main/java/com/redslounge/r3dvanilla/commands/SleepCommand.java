@@ -16,9 +16,9 @@ public class SleepCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
-    public SleepCommand(Vanilla pl)
+    public SleepCommand(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)

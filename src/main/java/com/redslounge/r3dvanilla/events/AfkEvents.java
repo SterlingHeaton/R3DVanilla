@@ -16,9 +16,9 @@ public class AfkEvents implements Listener
 {
     private Vanilla plugin;
 
-    public AfkEvents(Vanilla pl)
+    public AfkEvents(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     @EventHandler

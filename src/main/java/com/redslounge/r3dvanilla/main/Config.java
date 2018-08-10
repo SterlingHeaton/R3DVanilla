@@ -18,9 +18,9 @@ public class Config
     private File configFileMain, configFilePlayer;
     private FileConfiguration configMain, configPlayer;
 
-    public Config(Vanilla pl)
+    public Config(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
 
         createFiles();
     }

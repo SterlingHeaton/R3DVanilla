@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/R3DVanilla.iml" filepath="$PROJECT_DIR$/R3DVanilla.iml" />
+      <module fileurl="file://$PROJECT_DIR$/r3dvanilla.iml" filepath="$PROJECT_DIR$/r3dvanilla.iml" />
     </modules>
   </component>
 </project>

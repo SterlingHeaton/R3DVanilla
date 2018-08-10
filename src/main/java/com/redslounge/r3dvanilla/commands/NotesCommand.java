@@ -16,9 +16,9 @@ public class NotesCommand implements CommandExecutor, TabCompleter
 {
     private Vanilla plugin;
 
-    public NotesCommand(Vanilla pl)
+    public NotesCommand(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)

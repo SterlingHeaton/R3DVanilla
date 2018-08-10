@@ -10,9 +10,9 @@ public class EndermanEvent implements Listener
 {
     private Vanilla plugin;
 
-    public EndermanEvent(Vanilla pl)
+    public EndermanEvent(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     @EventHandler

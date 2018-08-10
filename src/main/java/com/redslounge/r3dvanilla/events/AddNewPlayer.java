@@ -13,9 +13,9 @@ public class AddNewPlayer implements Listener
 {
     private Vanilla plugin;
 
-    public AddNewPlayer(Vanilla pl)
+    public AddNewPlayer(Vanilla plugin)
     {
-        plugin = pl;
+        this.plugin = plugin;
     }
 
     @EventHandler
