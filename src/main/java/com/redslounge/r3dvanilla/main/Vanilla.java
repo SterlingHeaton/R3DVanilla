@@ -31,6 +31,7 @@ public class Vanilla extends JavaPlugin
         getCommand("cancelsleep").setExecutor(new SleepCommand(this));
         getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
         getCommand("bugreport").setExecutor(new BugReport(this));
+        getCommand("redanalytics").setExecutor(new RedAnalytics(this));
 
         afkTasks = new AfkTasks(this);
     }

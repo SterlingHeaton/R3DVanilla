@@ -146,7 +146,10 @@ public class PrivateMessageCommand implements CommandExecutor, TabCompleter
             {
                 for(Player player : plugin.getServer().getOnlinePlayers())
                 {
-                    list.add(player.getName());
+                    if(player.getName().toLowerCase().startsWith(args[0].toLowerCase()))
+                    {
+                        list.add(player.getName());
+                    }
                 }
 
                 return list;

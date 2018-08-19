@@ -42,6 +42,11 @@ public class AfkCommand implements CommandExecutor, TabCompleter
             else
             {
                 plugin.getAfkTasks().setPlayerAFK(player, playerInfo);
+
+                if(playerInfo.getAfkId() != -1)
+                {
+                    plugin.getServer().getScheduler().cancelTask(playerInfo.getAfkId());
+                }
             }
         }
         return false;

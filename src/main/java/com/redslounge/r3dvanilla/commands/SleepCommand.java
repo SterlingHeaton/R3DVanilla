@@ -33,6 +33,13 @@ public class SleepCommand implements CommandExecutor, TabCompleter
 
             Player player = (Player) sender;
 
+            if(plugin.getConfigSettings().getSleepingPlayers().isEmpty())
+            {
+                player.sendMessage(Utils.color("&cNo one is sleeping, silly boi."));
+
+                return true;
+            }
+
             if(plugin.getSleepingCooldown())
             {
                 player.sendMessage(Utils.color("&cMajority vote is enabled, cant kick people out of bed."));

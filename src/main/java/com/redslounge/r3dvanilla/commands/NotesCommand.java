@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -231,11 +232,13 @@ public class NotesCommand implements CommandExecutor, TabCompleter
         {
             if(args.length == 1)
             {
-                list.add("add");
-                list.add("del");
-                list.add("replace");
-                list.add("last");
-                list.add("view");
+                for(String item : getSubCommands())
+                {
+                    if(item.toLowerCase().startsWith(args[0].toLowerCase()))
+                    {
+                        list.add(item);
+                    }
+                }
 
                 return list;
             }
@@ -267,6 +270,19 @@ public class NotesCommand implements CommandExecutor, TabCompleter
             list.add(String.valueOf(noteNumber));
         }
         list.add("all");
+
+        return list;
+    }
+
+    private ArrayList<String> getSubCommands()
+    {
+        ArrayList<String> list = new ArrayList<>();
+
+        list.add("add");
+        list.add("del");
+        list.add("replace");
+        list.add("last");
+        list.add("view");
 
         return list;
     }

@@ -1,6 +1,6 @@
 name: R3DVanilla
 main: com.redslounge.r3dvanilla.main.Vanilla
-version: 1.1
+version: 1.2.1
 author: Sterling (Redstonehax)
 description: Essential "addons" for vanilla SMP
 commands:
@@ -23,3 +23,5 @@ commands:
   bugreport:
     description: Send me your bug reports and feature requests!
     aliases: [featurerequest]
+  redanalytics:
+    description: I'm a figment of your imagination.

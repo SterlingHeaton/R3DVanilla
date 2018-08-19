@@ -39,31 +39,55 @@ public class SleepingEvent implements Listener
 
         if(plugin.getSleepingCooldown())
         {
-            int percentage = calculatePercentage();
+            int validPlayers = (plugin.getServer().getOnlinePlayers().size() - plugin.getConfigSettings().getAfkPlayers().size());
+            double percentage = (double) plugin.getConfigSettings().getSleepPercent() / 100;
+            int neededPlayers = (int) Math.round(validPlayers * percentage);
 
-            if(percentage >= plugin.getConfigSettings().getSleepPercent())
+            int sleepingPlayers = plugin.getConfigSettings().getSleepingPlayers().size();
+
+            if(sleepingPlayers >= neededPlayers)
             {
-                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&a" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&a" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
 
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
                 {
                     setDay(WORLD);
-                }, 20 * 5);
+                }, 20 * 7);
             }
             else
             {
-                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&c" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
-
+                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&c" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
             }
             return;
         }
+
+//        if(plugin.getSleepingCooldown())
+//        {
+//            int percentage = calculatePercentage();
+//
+//            if(percentage >= plugin.getConfigSettings().getSleepPercent())
+//            {
+//                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&a" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
+//
+//                plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
+//                {
+//                    setDay(WORLD);
+//                }, 20 * 5);
+//            }
+//            else
+//            {
+//                plugin.getServer().broadcastMessage(Utils.color(player.getName() + " &7&ois now sleeping. &8[&c" + percentage + "%&7/&a" + plugin.getConfigSettings().getSleepPercent() + "%&8]"));
+//
+//            }
+//            return;
+//        }
 
         plugin.getServer().spigot().broadcast(buildInteractiveMessage(player.getName()));
 
         plugin.setSleeping(plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
         {
             setDay(WORLD);
-        }, 20 * 10));
+        }, 20 * 7));
     }
 
     @EventHandler
@@ -89,13 +113,13 @@ public class SleepingEvent implements Listener
         }
     }
 
-    private int calculatePercentage()
-    {
-        int total = plugin.getServer().getOnlinePlayers().size() - plugin.getConfigSettings().getAfkPlayers().size();
-        int playersSleeping = plugin.getConfigSettings().getSleepingPlayers().size();
-
-        return (playersSleeping * 100) / total;
-    }
+//    private int calculatePercentage()
+//    {
+//        int total = plugin.getServer().getOnlinePlayers().size() - plugin.getConfigSettings().getAfkPlayers().size();
+//        int playersSleeping = plugin.getConfigSettings().getSleepingPlayers().size();
+//
+//        return (playersSleeping * 100) / total;
+//    }
 
     private TextComponent buildInteractiveMessage(String playerName)
     {
