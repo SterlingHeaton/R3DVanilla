@@ -27,7 +27,7 @@ public class SleepCommand implements CommandExecutor, TabCompleter
         {
             if(!(sender instanceof Player))
             {
-                sender.sendMessage(Utils.color(Utils.syntax));
+                sender.sendMessage(Utils.color(Utils.inGame));
                 return false;
             }
 
@@ -42,7 +42,7 @@ public class SleepCommand implements CommandExecutor, TabCompleter
 
             if(plugin.getSleepingCooldown())
             {
-                player.sendMessage(Utils.color("&cMajority vote is enabled, cant kick people out of bed."));
+                player.sendMessage(Utils.color("&cMajority vote is enabled, can't kick people out of bed."));
                 return false;
             }
 
@@ -63,7 +63,7 @@ public class SleepCommand implements CommandExecutor, TabCompleter
                 sleepingPlayer.damage(0);
                 sleepingPlayer.setGameMode(originalGamemode);
 
-                sleepingPlayer.sendMessage(Utils.color(player.getName() + " &7&odoesn't want you sleeping, enabling majority vote."));
+                sleepingPlayer.sendMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&odoesn't want you sleeping, enabling majority vote."));
             }
         }
         return false;

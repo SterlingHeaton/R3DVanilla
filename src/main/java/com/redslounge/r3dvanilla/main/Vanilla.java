@@ -32,6 +32,7 @@ public class Vanilla extends JavaPlugin
         getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
         getCommand("bugreport").setExecutor(new BugReport(this));
         getCommand("redanalytics").setExecutor(new RedAnalytics(this));
+        getCommand("portal").setExecutor(new PortalCalculatorCommand(this));
 
         afkTasks = new AfkTasks(this);
     }

@@ -2,6 +2,7 @@ package com.redslounge.r3dvanilla.main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 public class Utils
 {
@@ -31,5 +32,17 @@ public class Utils
             note.append(parts[count] + " ");
         }
         return note.toString();
+    }
+
+    public static ChatColor getTeamColor(Player player)
+    {
+        try
+        {
+            return player.getScoreboard().getEntryTeam(player.getName()).getColor();
+        }
+        catch(NullPointerException e)
+        {
+            return ChatColor.WHITE;
+        }
     }
 }

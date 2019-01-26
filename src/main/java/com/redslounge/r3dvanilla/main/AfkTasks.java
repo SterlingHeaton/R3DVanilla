@@ -48,7 +48,7 @@ public class AfkTasks
 
     public void setPlayerAFK(Player player, RedPlayer playerInfo)
     {
-        Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois now AFK"));
+        Bukkit.broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now AFK"));
         player.setPlayerListName(Utils.color("&7(afk) &o" + player.getName()));
         playerInfo.setAfk(true);
         plugin.getConfigSettings().addAfkPlayer(player);
@@ -58,7 +58,7 @@ public class AfkTasks
     {
         if(displayMessage)
         {
-            Bukkit.broadcastMessage(Utils.color(player.getName() + " &7&ois no longer AFK"));
+            Bukkit.broadcastMessage(Utils.getTeamColor(player) + Utils.color(player.getName() + " &7&ois no longer AFK"));
         }
 
         player.setPlayerListName(player.getName());
