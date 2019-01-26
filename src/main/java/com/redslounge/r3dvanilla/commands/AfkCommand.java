@@ -30,6 +30,7 @@ public class AfkCommand implements CommandExecutor, TabCompleter
             if(!(sender instanceof Player))
             {
                 sender.sendMessage(Utils.color(Utils.inGame));
+                return false;
             }
 
             Player player = (Player) sender;
