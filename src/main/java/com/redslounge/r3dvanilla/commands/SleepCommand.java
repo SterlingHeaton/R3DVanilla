@@ -35,14 +35,14 @@ public class SleepCommand implements CommandExecutor, TabCompleter
 
             if(plugin.getConfigSettings().getSleepingPlayers().isEmpty())
             {
-                player.sendMessage(Utils.color("&cNo one is sleeping, silly boi."));
+                player.sendMessage(Utils.color("&cNo one is sleeping, silly boi&6."));
 
                 return true;
             }
 
             if(plugin.getSleepingCooldown())
             {
-                player.sendMessage(Utils.color("&cMajority vote is enabled, can't kick people out of bed."));
+                player.sendMessage(Utils.color("&cMajority vote is enabled, can't kick people out of bed&6."));
                 return false;
             }
 
@@ -63,7 +63,7 @@ public class SleepCommand implements CommandExecutor, TabCompleter
                 sleepingPlayer.damage(0);
                 sleepingPlayer.setGameMode(originalGamemode);
 
-                sleepingPlayer.sendMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&odoesn't want you sleeping, enabling majority vote."));
+                sleepingPlayer.sendMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&odoesn't want you sleeping, enabling majority vote&6."));
             }
         }
         return false;

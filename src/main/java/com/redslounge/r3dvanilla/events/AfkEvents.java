@@ -77,29 +77,5 @@ public class AfkEvents implements Listener
             plugin.getServer().getScheduler().cancelTask(playerInfo.getAfkId());
             playerInfo.setAfkId(-1);
         }
-
-//        if(playerInfo.getAfkId() == -1)
-//        {
-//            return;
-//        }
-//
-//        if(plugin.getServer().getScheduler().isQueued(playerInfo.getAfkId()))
-//        {
-//            plugin.getServer().getScheduler().cancelTask(playerInfo.getAfkId());
-//            playerInfo.setAfkId(-1);
-//            return;
-//        }
-//
-//        if(plugin.getServer().getScheduler().isCurrentlyRunning(playerInfo.getAfkId()))
-//        {
-//            plugin.getAfkTasks().setPlayerUnafk(player, playerInfo, leaveMessage);
-//            return;
-//        }
-//
-//        if(playerInfo.isAfk())
-//        {
-//            plugin.getAfkTasks().setPlayerUnafk(player, playerInfo, leaveMessage);
-//            return;
-//        }
     }
 }

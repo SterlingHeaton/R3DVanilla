@@ -44,7 +44,7 @@ public class PrivateMessageCommand implements CommandExecutor, TabCompleter
 
             if(targetPlayer == null)
             {
-                player.sendMessage(Utils.color("&cPlayer isn't online or spelled incorrectly"));
+                player.sendMessage(Utils.color("&cPlayer isn't online or spelled incorrectly&6."));
                 return false;
             }
 
@@ -110,12 +110,12 @@ public class PrivateMessageCommand implements CommandExecutor, TabCompleter
             if(playerInformation.isMessagePing())
             {
                 playerInformation.setMessagePing(false);
-                player.sendMessage(Utils.color("&aYou have &4&lDISABLED &ayour message ping."));
+                player.sendMessage(Utils.color("&aYou have &4&lDISABLED &ayour message ping&6."));
             }
             else
             {
                 playerInformation.setMessagePing(true);
-                player.sendMessage(Utils.color("&aYou have &2&lENABLED &ayour message ping."));
+                player.sendMessage(Utils.color("&aYou have &2&lENABLED &ayour message ping&6."));
             }
         }
         return false;

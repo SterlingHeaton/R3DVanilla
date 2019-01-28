@@ -30,15 +30,15 @@ public class PortalCalculatorCommand implements CommandExecutor
 
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color("&2Nether &aportal location&6: &7&o" + formatLocation(player.getLocation(), true)));
+            player.sendMessage(Utils.color("&2Nether &aportal location&6: &7&o" + formatLocation(player.getLocation(), true) + "&6."));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color("&2Overworld &aportal location&6: &7&o" + formatLocation(player.getLocation(), false)));
+            player.sendMessage(Utils.color("&2Overworld &aportal location&6: &7&o" + formatLocation(player.getLocation(), false) + "&6."));
         }
         else
         {
-            player.sendMessage(Utils.color("&cThis command can only be used in the overworld or nether."));
+            player.sendMessage(Utils.color("&cThis command can only be used in the overworld or nether&6."));
         }
         return false;
     }

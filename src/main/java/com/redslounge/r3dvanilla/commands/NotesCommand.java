@@ -89,12 +89,12 @@ public class NotesCommand implements CommandExecutor, TabCompleter
 
         if(playerInformation.getNotes().size() >= plugin.getConfigSettings().getNoteLimit())
         {
-            player.sendMessage(Utils.color("&c You have reached the note limit of &7" + plugin.getConfigSettings().getNoteLimit() + "&c."));
+            player.sendMessage(Utils.color("&cYou have reached the note limit of &7" + plugin.getConfigSettings().getNoteLimit() + "&6."));
             return;
         }
 
         playerInformation.addNote(Utils.buildMessage(args, 1));
-        player.sendMessage(Utils.color("&aSuccessfully added note!"));
+        player.sendMessage(Utils.color("&aSuccessfully added note&6!"));
     }
 
     private void deleteNote(Player player, String[] args)
@@ -113,7 +113,7 @@ public class NotesCommand implements CommandExecutor, TabCompleter
         if(args[1].equalsIgnoreCase("all"))
         {
             playerInformation.getNotes().clear();
-            player.sendMessage(Utils.color("&aAll of your notes have been &cdeleted&a."));
+            player.sendMessage(Utils.color("&aAll of your notes have been &cdeleted&6."));
             return;
         }
 
@@ -123,12 +123,12 @@ public class NotesCommand implements CommandExecutor, TabCompleter
 
             if((!checkViableNumber(playerInformation.getNotes().size(), noteNumber)) || noteNumber <= 0)
             {
-                player.sendMessage(Utils.color("&cNote number isn't associated with one of your notes."));
+                player.sendMessage(Utils.color("&cNote number isn't associated with one of your notes&6."));
                 return;
             }
 
             playerInformation.getNotes().remove(noteNumber -1);
-            player.sendMessage(Utils.color("&aYou have removed the note successfully!"));
+            player.sendMessage(Utils.color("&aYou have removed the note successfully&6!"));
             return;
         }
 
@@ -155,12 +155,12 @@ public class NotesCommand implements CommandExecutor, TabCompleter
 
         if(!checkViableNumber(plugin.getConfigSettings().getNoteLimit(), Integer.parseInt(args[1])))
         {
-            player.sendMessage(Utils.color("&cNote number isn't associated with one of your notes. "));
+            player.sendMessage(Utils.color("&cNote number isn't associated with one of your notes&6."));
             return;
         }
 
         playerInformation.getNotes().set(Integer.parseInt(args[1])-1, Utils.buildMessage(args, 2));
-        player.sendMessage(Utils.color("&aSuccessfully replaced the note!"));
+        player.sendMessage(Utils.color("&aSuccessfully replaced the note&6!"));
     }
 
     private void replaceLastNote(Player player, String[] args)
@@ -172,7 +172,7 @@ public class NotesCommand implements CommandExecutor, TabCompleter
         int lastIndex = playerInformation.getNotes().size()-1;
 
         playerInformation.getNotes().set(lastIndex, Utils.buildMessage(args, 1));
-        player.sendMessage(Utils.color("&aSuccessfully replaced your last note!"));
+        player.sendMessage(Utils.color("&aSuccessfully replaced your last note&6!"));
     }
 
     private void viewNotes(Player player)
@@ -183,11 +183,11 @@ public class NotesCommand implements CommandExecutor, TabCompleter
 
         if(playerInformation.getNotes().size() == 0)
         {
-            player.sendMessage(Utils.color("&cYou don't have any notes! &7&o/note add <note>"));
+            player.sendMessage(Utils.color("&cYou don't have any notes&6! &7&o/note add <note>"));
             return;
         }
 
-        player.sendMessage(Utils.color("&6Personal Notes:"));
+        player.sendMessage(Utils.color("&aPersonal Notes&6:"));
         for(int count = 0; count < playerInformation.getNotes().size(); count++)
         {
             player.sendMessage(Utils.color("&a" + (count+1) + "&6. &7&o" + playerInformation.getNotes().get(count)));
