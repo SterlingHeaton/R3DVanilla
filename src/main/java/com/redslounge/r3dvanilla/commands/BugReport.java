@@ -32,7 +32,7 @@ public class BugReport implements CommandExecutor, TabCompleter
 
             Player player = (Player) commandSender;
 
-            player.sendMessage(Utils.color("&cSend your bug reports or feature requests here: &ahttps://goo.gl/forms/6X4OXw6oZYNlwCp82"));
+            player.sendMessage(Utils.color("&cSend your bug reports or feature requests here&6: &ahttps://goo.gl/forms/6X4OXw6oZYNlwCp82"));
         }
 
         return false;

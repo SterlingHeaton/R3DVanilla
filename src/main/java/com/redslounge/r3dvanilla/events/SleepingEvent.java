@@ -58,7 +58,7 @@ public class SleepingEvent implements Listener
 
             if(sleepingPlayers >= neededPlayers)
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping. &8[&a" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. &8[&a" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
 
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
                 {
@@ -67,7 +67,7 @@ public class SleepingEvent implements Listener
             }
             else
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping. &8[&c" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. &8[&c" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
             }
             return;
         }
@@ -110,7 +110,7 @@ public class SleepingEvent implements Listener
 
     private TextComponent buildInteractiveMessage(Player player)
     {
-        TextComponent message = new TextComponent(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping. " + "&c[CANCEL]"));
+        TextComponent message = new TextComponent(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. " + "&c[CANCEL]"));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me to keep it night time and enable majority vote.").color(ChatColor.RED).create()));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cancelsleep"));
 

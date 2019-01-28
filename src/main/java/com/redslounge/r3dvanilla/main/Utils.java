@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 
 public class Utils
 {
-    public static String inGame = "&cThis command is for in-game use.";
-    public static String syntax = "&cIncorrect Syntax&f: &7&o";
+    public static String inGame = "&cThis command is for in-game use&6.";
+    public static String syntax = "&cIncorrect Syntax&6: &7&o";
 
     public static String color(String color)
     {
@@ -42,7 +42,7 @@ public class Utils
         }
         catch(NullPointerException e)
         {
-            return ChatColor.WHITE;
+            return ChatColor.GREEN;
         }
     }
 }
