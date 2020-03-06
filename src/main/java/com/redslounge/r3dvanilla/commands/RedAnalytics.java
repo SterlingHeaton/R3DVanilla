@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class RedAnalytics implements CommandExecutor
 {
-    Vanilla plugin;
+    Plugin plugin;
 
-    public RedAnalytics(Vanilla plugin)
+    public RedAnalytics(Plugin plugin)
     {
         this.plugin = plugin;
     }

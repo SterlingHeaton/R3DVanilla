@@ -1,5 +1,7 @@
 package com.redslounge.r3dvanilla.main;
 
+import com.redslounge.r3dvanilla.Plugin;
+import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.objects.RedConfig;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.configuration.ConfigurationSection;
@@ -14,11 +16,11 @@ import java.util.UUID;
 
 public class Config
 {
-    private Vanilla plugin;
+    private Plugin plugin;
     private File configFileMain, configFilePlayer;
     private FileConfiguration configMain, configPlayer;
 
-    public Config(Vanilla plugin)
+    public Config(Plugin plugin)
     {
         this.plugin = plugin;
 

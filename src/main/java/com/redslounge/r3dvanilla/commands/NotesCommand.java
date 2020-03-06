@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,15 +9,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotesCommand implements CommandExecutor, TabCompleter
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public NotesCommand(Vanilla plugin)
+    public NotesCommand(Plugin plugin)
     {
         this.plugin = plugin;
     }

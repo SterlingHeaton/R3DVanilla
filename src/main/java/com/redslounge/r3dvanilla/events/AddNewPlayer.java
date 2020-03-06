@@ -1,6 +1,6 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,9 +11,9 @@ import java.util.UUID;
 
 public class AddNewPlayer implements Listener
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public AddNewPlayer(Vanilla plugin)
+    public AddNewPlayer(Plugin plugin)
     {
         this.plugin = plugin;
     }

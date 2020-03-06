@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -15,9 +15,9 @@ import java.util.List;
 
 public class PrivateMessageCommand implements CommandExecutor, TabCompleter
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public PrivateMessageCommand(Vanilla plugin)
+    public PrivateMessageCommand(Plugin plugin)
     {
         this.plugin = plugin;
     }

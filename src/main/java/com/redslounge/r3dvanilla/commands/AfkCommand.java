@@ -1,9 +1,8 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,13 +11,12 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AfkCommand implements CommandExecutor, TabCompleter
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public AfkCommand(Vanilla plugin)
+    public AfkCommand(Plugin plugin)
     {
         this.plugin = plugin;
     }
