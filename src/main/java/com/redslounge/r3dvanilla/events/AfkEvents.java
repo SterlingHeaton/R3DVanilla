@@ -1,6 +1,6 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,9 +13,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class AfkEvents implements Listener
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public AfkEvents(Vanilla plugin)
+    public AfkEvents(Plugin plugin)
     {
         this.plugin = plugin;
     }

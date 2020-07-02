@@ -1,6 +1,6 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.entity.Enderman;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,9 +8,9 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 
 public class EndermanEvent implements Listener
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public EndermanEvent(Vanilla plugin)
+    public EndermanEvent(Plugin plugin)
     {
         this.plugin = plugin;
     }

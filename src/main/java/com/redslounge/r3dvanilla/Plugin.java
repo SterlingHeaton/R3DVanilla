@@ -1,11 +1,13 @@
-package com.redslounge.r3dvanilla.main;
+package com.redslounge.r3dvanilla;
 
 import com.redslounge.r3dvanilla.commands.*;
 import com.redslounge.r3dvanilla.events.*;
+import com.redslounge.r3dvanilla.main.AfkTasks;
+import com.redslounge.r3dvanilla.main.Config;
 import com.redslounge.r3dvanilla.objects.RedConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Vanilla extends JavaPlugin
+public class Plugin extends JavaPlugin
 {
     private Config config;
     private RedConfig configSettings;

@@ -1,4 +1,4 @@
-package com.redslounge.r3dvanilla.main;
+package com.redslounge.r3dvanilla;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,7 +29,7 @@ public class Utils
         StringBuilder note = new StringBuilder();
         for(int count = start; count < parts.length; count++)
         {
-            note.append(parts[count] + " ");
+            note.append(parts[count]).append(" ");
         }
         return note.toString();
     }

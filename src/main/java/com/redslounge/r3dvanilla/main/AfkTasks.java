@@ -1,14 +1,16 @@
 package com.redslounge.r3dvanilla.main;
 
+import com.redslounge.r3dvanilla.Plugin;
+import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.objects.RedPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class AfkTasks
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public AfkTasks(Vanilla plugin)
+    public AfkTasks(Plugin plugin)
     {
         this.plugin = plugin;
 

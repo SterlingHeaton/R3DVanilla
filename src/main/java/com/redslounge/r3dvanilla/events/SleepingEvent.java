@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -16,9 +16,9 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class SleepingEvent implements Listener
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public SleepingEvent(Vanilla plugin)
+    public SleepingEvent(Plugin plugin)
     {
         this.plugin = plugin;
     }

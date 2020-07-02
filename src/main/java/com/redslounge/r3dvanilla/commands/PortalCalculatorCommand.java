@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -11,9 +11,9 @@ import org.bukkit.entity.Player;
 
 public class PortalCalculatorCommand implements CommandExecutor
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public PortalCalculatorCommand(Vanilla plugin)
+    public PortalCalculatorCommand(Plugin plugin)
     {
         this.plugin = plugin;
     }

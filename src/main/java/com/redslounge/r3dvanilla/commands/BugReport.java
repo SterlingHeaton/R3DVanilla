@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,9 +13,9 @@ import java.util.List;
 
 public class BugReport implements CommandExecutor, TabCompleter
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public BugReport(Vanilla plugin)
+    public BugReport(Plugin plugin)
     {
         this.plugin = plugin;
     }

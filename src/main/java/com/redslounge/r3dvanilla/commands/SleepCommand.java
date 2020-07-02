@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
-import com.redslounge.r3dvanilla.main.Utils;
-import com.redslounge.r3dvanilla.main.Vanilla;
+import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,9 +14,9 @@ import java.util.List;
 
 public class SleepCommand implements CommandExecutor, TabCompleter
 {
-    private Vanilla plugin;
+    private Plugin plugin;
 
-    public SleepCommand(Vanilla plugin)
+    public SleepCommand(Plugin plugin)
     {
         this.plugin = plugin;
     }
