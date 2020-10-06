@@ -1,4 +1,4 @@
-package com.redslounge.r3dvanilla.objects;
+package com.redslounge.r3dvanilla.models;
 
 import java.util.List;
 import java.util.UUID;

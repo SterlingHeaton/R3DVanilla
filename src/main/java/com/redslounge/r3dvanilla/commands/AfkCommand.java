@@ -2,7 +2,7 @@ package com.redslounge.r3dvanilla.commands;
 
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.Plugin;
-import com.redslounge.r3dvanilla.objects.RedPlayer;
+import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

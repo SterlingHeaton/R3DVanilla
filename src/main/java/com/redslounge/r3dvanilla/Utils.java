@@ -45,4 +45,9 @@ public class Utils
             return ChatColor.GREEN;
         }
     }
+
+    public static void logToConsole(String message)
+    {
+        Bukkit.getLogger().severe(message);
+    }
 }

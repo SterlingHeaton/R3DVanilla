@@ -1,7 +1,7 @@
 package com.redslounge.r3dvanilla.events;
 
 import com.redslounge.r3dvanilla.Plugin;
-import com.redslounge.r3dvanilla.objects.RedPlayer;
+import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

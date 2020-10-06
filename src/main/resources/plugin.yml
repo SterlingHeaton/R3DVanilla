@@ -1,6 +1,6 @@
 name: R3DVanilla
 main: com.redslounge.r3dvanilla.Plugin
-version: 2.0
+version: ${version}
 author: Sterling (@sterlingheaton)
 description: Simple additions for vanilla
 commands:
