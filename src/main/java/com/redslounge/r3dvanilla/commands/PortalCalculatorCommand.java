@@ -28,11 +28,11 @@ public class PortalCalculatorCommand extends BaseCommand
     {
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color(tag + " &2Nether &aportal location: &7&o" + formatLocation(player.getLocation(), true)));
+            player.sendMessage(Utils.color(tag + " &4Nether &aportal location: &7&o" + formatLocation(player.getLocation(), true)));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color(tag + " &4Overworld &aportal location: &7&o" + formatLocation(player.getLocation(), false)));
+            player.sendMessage(Utils.color(tag + " &2Overworld &aportal location: &7&o" + formatLocation(player.getLocation(), false)));
         }
         else
         {

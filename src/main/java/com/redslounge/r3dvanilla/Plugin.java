@@ -2,12 +2,16 @@ package com.redslounge.r3dvanilla;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.redslounge.r3dvanilla.commands.*;
+import com.redslounge.r3dvanilla.commands.messages.MessagePingCommand;
+import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
+import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
 import com.redslounge.r3dvanilla.events.*;
 import com.redslounge.r3dvanilla.main.AfkTasks;
 import com.redslounge.r3dvanilla.models.RedConfig;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.plugin2.message.Message;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,14 +67,18 @@ public class Plugin extends JavaPlugin
         commandManager = new BukkitCommandManager(this);
         commandManager.registerCommand(new NotesCommand(this));
         commandManager.registerCommand(new PortalCalculatorCommand(this));
+        commandManager.registerCommand(new PrivateMessageCommand(this));
+        commandManager.registerCommand(new ReplyCommand(this));
+        commandManager.registerCommand(new MessagePingCommand());
+
 
         getCommand("afk").setExecutor(new AfkCommand(this));
-        getCommand("message").setExecutor(new PrivateMessageCommand(this));
-        getCommand("reply").setExecutor(new PrivateMessageCommand(this));
+//        getCommand("message").setExecutor(new PrivateMessageCommand(this));
+//        getCommand("reply").setExecutor(new PrivateMessageCommand(this));
 //        getCommand("note").setExecutor(new NotesCommand(this));
 //        getCommand("notes").setExecutor(new NotesCommand(this));
         getCommand("cancelsleep").setExecutor(new SleepCommand(this));
-        getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
+//        getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
         getCommand("bugreport").setExecutor(new BugReport(this));
         getCommand("redanalytics").setExecutor(new RedAnalytics(this));
 //        getCommand("portal").setExecutor(new PortalCalculatorCommand(this));

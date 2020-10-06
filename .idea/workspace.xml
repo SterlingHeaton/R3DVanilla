@@ -5,28 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f08002e2-6eb7-48e5-b86b-3aacf44b8a4f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/DataManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__co_aikar_acf_bukkit_0_5_0_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__co_aikar_acf_bukkit_0_5_0_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/MessagePingCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/PrivateMessageCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/ReplyCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R3DVanilla.iml" beforeDir="false" afterPath="$PROJECT_DIR$/R3DVanilla.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PrivateMessageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PrivateMessageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AddNewPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AddNewPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PrivateMessageCommand.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/objects/RedConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/objects/RedPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +113,7 @@
       <workItem from="1601122210995" duration="18000" />
       <workItem from="1601255358764" duration="739000" />
       <workItem from="1601927381060" duration="855000" />
-      <workItem from="1601965375762" duration="2885000" />
+      <workItem from="1601965375762" duration="5031000" />
     </task>
     <servers />
   </component>
@@ -164,10 +151,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="#Project_Structure/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1601122716879" />
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1601966346390">
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1601969766745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601966346390" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601969766745" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594803387394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -196,6 +183,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1578" height="1028" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1601122694797" />
+    <state x="690" y="280" key="extract.method.dialog" timestamp="1601970066799">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="280" key="extract.method.dialog/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601970066799" />
     <state x="342" y="203" key="new project wizard" timestamp="1601255480633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

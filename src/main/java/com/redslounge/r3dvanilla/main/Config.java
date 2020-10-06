@@ -107,7 +107,7 @@ public class Config
         for(UUID playerID : plugin.getConfigSettings().getPlayers())
         {
             getConfigPlayers().set(playerID + ".notes", plugin.getConfigSettings().getPlayer(playerID).getNotes());
-            getConfigPlayers().set(playerID + ".messagePing", plugin.getConfigSettings().getPlayer(playerID).isMessagePing());
+            getConfigPlayers().set(playerID + ".messagePing", plugin.getConfigSettings().getPlayer(playerID).hasMessagePing());
         }
 
         try

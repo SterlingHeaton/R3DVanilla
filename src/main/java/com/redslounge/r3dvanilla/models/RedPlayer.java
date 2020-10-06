@@ -27,7 +27,7 @@ public class RedPlayer
         this.afk = afk;
     }
 
-    public boolean isMessagePing()
+    public boolean hasMessagePing()
     {
         return messagePing;
     }
