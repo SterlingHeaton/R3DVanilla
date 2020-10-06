@@ -20,7 +20,6 @@ public class Plugin extends JavaPlugin
 {
 //    private Config config;
     private RedConfig configSettings;
-    private AfkTasks afkTasks;
     private boolean sleepingCooldown;
     private int sleeping;
 
@@ -59,7 +58,7 @@ public class Plugin extends JavaPlugin
         setupEvents();
         loadConfig();
 
-        afkTasks = new AfkTasks(this);
+        new AfkTasks(this);
     }
 
     private void setupCommands()
@@ -70,9 +69,9 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new PrivateMessageCommand(this));
         commandManager.registerCommand(new ReplyCommand(this));
         commandManager.registerCommand(new MessagePingCommand());
+        commandManager.registerCommand(new AfkCommand(this));
 
-
-        getCommand("afk").setExecutor(new AfkCommand(this));
+//        getCommand("afk").setExecutor(new AfkCommand(this));
 //        getCommand("message").setExecutor(new PrivateMessageCommand(this));
 //        getCommand("reply").setExecutor(new PrivateMessageCommand(this));
 //        getCommand("note").setExecutor(new NotesCommand(this));
@@ -112,11 +111,6 @@ public class Plugin extends JavaPlugin
     public RedConfig getConfigSettings()
     {
         return configSettings;
-    }
-
-    public AfkTasks getAfkTasks()
-    {
-        return afkTasks;
     }
 
     public boolean getSleepingCooldown()
