@@ -24,6 +24,11 @@ public class DataManager
     private HashMap<UUID, RedPlayer> players = new HashMap<>();
     private int afkTimer;
     private ArrayList<Player> afkPlayers = new ArrayList<>();
+    private ArrayList<Player> sleepingPlayers = new ArrayList<>();
+    private int sleepingID;
+    private boolean sleepVote;
+    private int sleepPercentage;
+    private int sleepCooldown;
 
     public ArrayList<Player> getAfkPlayers()
     {
@@ -58,5 +63,55 @@ public class DataManager
     public void setPlayers(HashMap<UUID, RedPlayer> players)
     {
         this.players = players;
+    }
+
+    public ArrayList<Player> getSleepingPlayers()
+    {
+        return sleepingPlayers;
+    }
+
+    public void setSleepingPlayers(ArrayList<Player> sleepingPlayers)
+    {
+        this.sleepingPlayers = sleepingPlayers;
+    }
+
+    public int getSleepingID()
+    {
+        return sleepingID;
+    }
+
+    public void setSleepingID(int sleepingID)
+    {
+        this.sleepingID = sleepingID;
+    }
+
+    public boolean isSleepVote()
+    {
+        return sleepVote;
+    }
+
+    public void setSleepVote(boolean sleepVote)
+    {
+        this.sleepVote = sleepVote;
+    }
+
+    public int getSleepPercentage()
+    {
+        return sleepPercentage;
+    }
+
+    public void setSleepPercentage(int sleepPercentage)
+    {
+        this.sleepPercentage = sleepPercentage;
+    }
+
+    public int getSleepCooldown()
+    {
+        return sleepCooldown;
+    }
+
+    public void setSleepCooldown(int sleepCooldown)
+    {
+        this.sleepCooldown = sleepCooldown;
     }
 }

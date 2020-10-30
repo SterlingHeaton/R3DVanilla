@@ -1,11 +1,10 @@
 package com.redslounge.r3dvanilla.events;
 
+import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.Plugin;
-import net.md_5.bungee.api.ChatColor;
+import com.redslounge.r3dvanilla.models.RedPlayer;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -26,70 +25,53 @@ public class SleepingEvent implements Listener
     @EventHandler
     private void onPlayerSleep(PlayerBedEnterEvent event)
     {
-        final World WORLD = event.getPlayer().getWorld();
+        DataManager dataManager = DataManager.getInstance();
+        RedPlayer redPlayer = dataManager.getPlayers().get(event.getPlayer().getUniqueId());
 
-        Player player = event.getPlayer();
-
-        if(WORLD.getEnvironment() != World.Environment.NORMAL)
+        if(!event.getPlayer().getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
             return;
         }
 
-        if(event.getBedEnterResult().equals(PlayerBedEnterEvent.BedEnterResult.NOT_POSSIBLE_NOW))
-        {
-            player.setBedSpawnLocation(event.getBed().getLocation());
-            player.sendMessage(Utils.color("&aSpawn point set to bed&6."));
-            return;
-        }
-        else if(!event.getBedEnterResult().equals(PlayerBedEnterEvent.BedEnterResult.OK))
-        {
-            return;
-        }
+        dataManager.getSleepingPlayers().add(event.getPlayer());
 
-        plugin.getConfigSettings().addSleepingPlayer(player);
-
-        if(plugin.getSleepingCooldown())
+        if(dataManager.isSleepVote())
         {
-            int validPlayers = (plugin.getServer().getOnlinePlayers().size() - plugin.getConfigSettings().getAfkPlayers().size());
-            double percentage = (double) plugin.getConfigSettings().getSleepPercent() / 100;
+            int validPlayers = (plugin.getServer().getOnlinePlayers().size() - dataManager.getAfkPlayers().size());
+            double percentage = (double) dataManager.getSleepPercentage() / 100;
             int neededPlayers = (int) Math.round(validPlayers * percentage);
 
-            int sleepingPlayers = plugin.getConfigSettings().getSleepingPlayers().size();
-
-            if(sleepingPlayers >= neededPlayers)
+            if(dataManager.getSleepingPlayers().size() >= neededPlayers)
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. &8[&a" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
-
-                plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
-                {
-                    setDay(WORLD);
-                }, 20 * 7);
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(event.getPlayer()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&a" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> setDay(event.getPlayer().getWorld()), 20 * 7);
             }
             else
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. &8[&c" + sleepingPlayers + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(event.getPlayer()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&c" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
             }
-            return;
         }
-
-        plugin.getServer().spigot().broadcast(buildInteractiveMessage(player));
-
-        plugin.setSleeping(plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
+        else
         {
-            setDay(WORLD);
-        }, 20 * 7));
+            plugin.getServer().spigot().broadcast(buildInteractiveMessage(event.getPlayer()));
+
+            if(!plugin.getServer().getScheduler().isQueued(dataManager.getSleepingID()))
+            {
+                dataManager.setSleepingID(plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> setDay(event.getPlayer().getWorld()), 20 * 7));
+            }
+        }
     }
 
     @EventHandler
     private void onPlayerExitBed(PlayerBedLeaveEvent event)
     {
-        Player player = event.getPlayer();
+        DataManager dataManager = DataManager.getInstance();
 
-        plugin.getConfigSettings().getSleepingPlayers().remove(player);
+        dataManager.getSleepingPlayers().remove(event.getPlayer());
 
-        if(plugin.getConfigSettings().getSleepingPlayers().isEmpty())
+        if(dataManager.getSleepingPlayers().isEmpty())
         {
-            plugin.getServer().getScheduler().cancelTask(plugin.getSleeping());
+            plugin.getServer().getScheduler().cancelTask(dataManager.getSleepingID());
         }
     }
 
@@ -110,8 +92,7 @@ public class SleepingEvent implements Listener
 
     private TextComponent buildInteractiveMessage(Player player)
     {
-        TextComponent message = new TextComponent(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping&6. " + "&c[CANCEL]"));
-        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click me to keep it night time and enable majority vote.").color(ChatColor.RED).create()));
+        TextComponent message = new TextComponent(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping. " + "&c[CLICK TO CANCEL]"));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cancelsleep"));
 
         return message;

@@ -6,9 +6,6 @@ import org.bukkit.entity.Player;
 
 public class Utils
 {
-    public static String inGame = "&cThis command is for in-game use&6.";
-    public static String syntax = "&cIncorrect Syntax&6: &7&o";
-
     public static String color(String color)
     {
         return ChatColor.translateAlternateColorCodes('&', color);
@@ -44,10 +41,5 @@ public class Utils
         {
             return ChatColor.GREEN;
         }
-    }
-
-    public static void logToConsole(String message)
-    {
-        Bukkit.getLogger().severe(message);
     }
 }

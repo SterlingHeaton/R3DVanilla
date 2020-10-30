@@ -8,9 +8,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/DataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/BugReport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/RedAnalytics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/SleepCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/SleepCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/SleepingEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/SleepingEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedConfig.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,19 +70,6 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3908046" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -110,7 +105,9 @@
       <workItem from="1601122210995" duration="18000" />
       <workItem from="1601255358764" duration="739000" />
       <workItem from="1601927381060" duration="855000" />
-      <workItem from="1601965375762" duration="9283000" />
+      <workItem from="1601965375762" duration="12526000" />
+      <workItem from="1604050652125" duration="64000" />
+      <workItem from="1604050729998" duration="4032000" />
     </task>
     <servers />
   </component>
@@ -148,14 +145,18 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="#Project_Structure/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1601122716879" />
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1602005201263">
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1604052096632">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1602005201263" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594803387394">
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604052096632" />
+    <state x="649" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604051835854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594803387394" />
+    <state x="649" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604051835854" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604054529713">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604054529713" />
     <state x="740" y="221" key="FileChooserDialogImpl" timestamp="1601255443070">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

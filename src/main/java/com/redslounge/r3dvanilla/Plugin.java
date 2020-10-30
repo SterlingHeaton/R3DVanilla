@@ -7,22 +7,15 @@ import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
 import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
 import com.redslounge.r3dvanilla.events.*;
 import com.redslounge.r3dvanilla.main.AfkTasks;
-import com.redslounge.r3dvanilla.models.RedConfig;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import sun.plugin2.message.Message;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Plugin extends JavaPlugin
 {
-//    private Config config;
-    private RedConfig configSettings;
-    private boolean sleepingCooldown;
-    private int sleeping;
-
     private FileConfiguration config, players;
     private final File configFile = new File(getDataFolder(), "config.yml");
     private final File playersFile = new File(getDataFolder(), "players.yml");
@@ -33,8 +26,6 @@ public class Plugin extends JavaPlugin
     @Override
     public void onEnable()
     {
-//        config = new Config(this);
-
         if(!configFile.exists())
         {
             this.saveDefaultConfig();
@@ -70,17 +61,7 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new ReplyCommand(this));
         commandManager.registerCommand(new MessagePingCommand());
         commandManager.registerCommand(new AfkCommand(this));
-
-//        getCommand("afk").setExecutor(new AfkCommand(this));
-//        getCommand("message").setExecutor(new PrivateMessageCommand(this));
-//        getCommand("reply").setExecutor(new PrivateMessageCommand(this));
-//        getCommand("note").setExecutor(new NotesCommand(this));
-//        getCommand("notes").setExecutor(new NotesCommand(this));
-        getCommand("cancelsleep").setExecutor(new SleepCommand(this));
-//        getCommand("messageping").setExecutor(new PrivateMessageCommand(this));
-        getCommand("bugreport").setExecutor(new BugReport(this));
-        getCommand("redanalytics").setExecutor(new RedAnalytics(this));
-//        getCommand("portal").setExecutor(new PortalCalculatorCommand(this));
+        commandManager.registerCommand(new SleepCommand(this));
     }
 
     private void setupEvents()
@@ -101,35 +82,5 @@ public class Plugin extends JavaPlugin
     public void onDisable()
     {
 //        config.saveSettings();
-    }
-
-    public void setConfigSettings(RedConfig configSettings)
-    {
-        this.configSettings = configSettings;
-    }
-
-    public RedConfig getConfigSettings()
-    {
-        return configSettings;
-    }
-
-    public boolean getSleepingCooldown()
-    {
-        return sleepingCooldown;
-    }
-
-    public void setSleepingCooldown(boolean sleepingCooldown)
-    {
-        this.sleepingCooldown = sleepingCooldown;
-    }
-
-    public int getSleeping()
-    {
-        return sleeping;
-    }
-
-    public void setSleeping(int sleeping)
-    {
-        this.sleeping = sleeping;
     }
 }

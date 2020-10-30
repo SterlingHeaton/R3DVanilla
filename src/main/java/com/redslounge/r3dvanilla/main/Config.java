@@ -2,7 +2,6 @@ package com.redslounge.r3dvanilla.main;
 
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.models.RedConfig;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
