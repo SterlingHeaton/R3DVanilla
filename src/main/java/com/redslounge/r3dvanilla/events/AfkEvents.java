@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class AfkEvents implements Listener
 {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public AfkEvents(Plugin plugin)
     {

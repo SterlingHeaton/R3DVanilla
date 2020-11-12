@@ -4,6 +4,7 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.DataManager;
+import com.redslounge.r3dvanilla.Utils;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ public class RedAnalytics extends BaseCommand
     @Default
     public void onCommand(Player player)
     {
+        if(!player.getName().equals("Redstonehax"))
+        {
+            player.sendMessage(Utils.color("&cGo away."));
+            return;
+        }
+
         DataManager dataManager = DataManager.getInstance();
 
         player.sendMessage("");

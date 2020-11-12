@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 @CommandAlias("messageping")
 public class MessagePingCommand extends BaseCommand
 {
-    private String tag = "&8[&6Message Ping&8]";
+    private final String tag = "&8[&6Message Ping&8]";
 
     @Default
     public void onMessagePing(Player player)

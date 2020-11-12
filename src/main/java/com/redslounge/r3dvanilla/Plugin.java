@@ -24,9 +24,7 @@ public class Plugin extends JavaPlugin
     private FileConfiguration config, players;
     private final File configFile = new File(getDataFolder(), "config.yml");
     private final File playersFile = new File(getDataFolder(), "players.yml");
-
     private BukkitCommandManager commandManager;
-
 
     @Override
     public void onEnable()
@@ -60,8 +58,8 @@ public class Plugin extends JavaPlugin
     private void setupCommands()
     {
         commandManager = new BukkitCommandManager(this);
-        commandManager.registerCommand(new NotesCommand(this));
-        commandManager.registerCommand(new PortalCalculatorCommand(this));
+        commandManager.registerCommand(new NotesCommand());
+        commandManager.registerCommand(new PortalCalculatorCommand());
         commandManager.registerCommand(new PrivateMessageCommand(this));
         commandManager.registerCommand(new ReplyCommand(this));
         commandManager.registerCommand(new MessagePingCommand());
@@ -72,9 +70,9 @@ public class Plugin extends JavaPlugin
 
     private void setupEvents()
     {
-        getServer().getPluginManager().registerEvents(new AddNewPlayer(this), this);
+        getServer().getPluginManager().registerEvents(new AddNewPlayer(), this);
         getServer().getPluginManager().registerEvents(new AfkEvents(this), this);
-        getServer().getPluginManager().registerEvents(new EndermanEvent(this), this);
+        getServer().getPluginManager().registerEvents(new EndermanEvent(), this);
         getServer().getPluginManager().registerEvents(new SleepingEvent(this), this);
     }
 

@@ -6,18 +6,36 @@
   <component name="ChangeListManager">
     <list default="true" id="f08002e2-6eb7-48e5-b86b-3aacf44b8a4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/DataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/Plugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/AfkCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/NotesCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/RedAnalytics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/RedAnalytics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/SleepCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/SleepCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/MessagePingCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/MessagePingCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/PrivateMessageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/PrivateMessageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/ReplyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/commands/messages/ReplyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AddNewPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AddNewPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/AfkEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/EndermanEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/EndermanEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/SleepingEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/events/SleepingEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/main/AfkTasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/redslounge/r3dvanilla/models/RedPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/AfkCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/AfkCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/NotesCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/NotesCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/main/AfkTasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/main/AfkTasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/PortalCalculatorCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/RedAnalytics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/redslounge/r3dvanilla/commands/RedAnalytics.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -117,7 +135,7 @@
       <workItem from="1604050652125" duration="64000" />
       <workItem from="1604050729998" duration="4894000" />
       <workItem from="1604367458369" duration="3796000" />
-      <workItem from="1605163861327" duration="5759000" />
+      <workItem from="1605163861327" duration="7523000" />
     </task>
     <servers />
   </component>
@@ -155,10 +173,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="94" key="#Project_Structure/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1601122716879" />
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1604055534181">
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1605171205414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604055534181" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605171205414" />
     <state x="649" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604051835854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -171,22 +189,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="221" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601255443070" />
-    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1605169603829">
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom" timestamp="1605170646586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605169603829" />
-    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1605169603829">
+    <state width="1877" height="276" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605170646586" />
+    <state width="1877" height="276" key="GridCell.Tab.0.center" timestamp="1605170646586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605169603829" />
-    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1605169603829">
+    <state width="1877" height="276" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605170646586" />
+    <state width="1877" height="276" key="GridCell.Tab.0.left" timestamp="1605170646586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605169603829" />
-    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1605169603829">
+    <state width="1877" height="276" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605170646586" />
+    <state width="1877" height="276" key="GridCell.Tab.0.right" timestamp="1605170646586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="276" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605169603829" />
+    <state width="1877" height="276" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605170646586" />
     <state x="124" y="17" width="974" height="750" key="dock-window-1" timestamp="1604055668871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

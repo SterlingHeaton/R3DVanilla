@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 @CommandAlias("reply|r")
 public class ReplyCommand extends BaseCommand
 {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public ReplyCommand(Plugin plugin)
     {

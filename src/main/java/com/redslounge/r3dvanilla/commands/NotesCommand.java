@@ -6,25 +6,18 @@ import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.entity.Player;
 
 @CommandAlias("note")
 public class NotesCommand extends BaseCommand
 {
-    private Plugin plugin;
-    private String tag = "&8[&6Notes&8]";
-
-    public NotesCommand(Plugin plugin)
-    {
-        this.plugin = plugin;
-    }
+    private final String tag = "&8[&6Notes&8]";
 
     @Default
     public void onMainCommand(Player player)
     {
-        player.sendMessage(Utils.color(tag + " &cInvalid syntax: &7&o/note <add|delete|view>"));
+        player.sendMessage(Utils.color(tag + " &cInvalid syntax: &7&o/note <add | delete | view>"));
     }
 
     @Subcommand("add")

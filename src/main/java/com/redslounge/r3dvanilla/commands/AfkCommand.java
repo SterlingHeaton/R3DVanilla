@@ -8,19 +8,12 @@ import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @CommandAlias("afk")
 public class AfkCommand extends BaseCommand
 {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public AfkCommand(Plugin plugin)
     {

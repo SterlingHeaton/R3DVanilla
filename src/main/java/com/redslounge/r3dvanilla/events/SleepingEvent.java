@@ -1,9 +1,8 @@
 package com.redslounge.r3dvanilla.events;
 
 import com.redslounge.r3dvanilla.DataManager;
-import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.Plugin;
-import com.redslounge.r3dvanilla.models.RedPlayer;
+import com.redslounge.r3dvanilla.Utils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.World;
@@ -15,7 +14,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class SleepingEvent implements Listener
 {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public SleepingEvent(Plugin plugin)
     {
@@ -26,7 +25,6 @@ public class SleepingEvent implements Listener
     private void onPlayerSleep(PlayerBedEnterEvent event)
     {
         DataManager dataManager = DataManager.getInstance();
-        RedPlayer redPlayer = dataManager.getPlayers().get(event.getPlayer().getUniqueId());
 
         if(!event.getPlayer().getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {

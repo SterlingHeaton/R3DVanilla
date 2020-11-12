@@ -4,7 +4,6 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.Plugin;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -12,13 +11,7 @@ import org.bukkit.entity.Player;
 @CommandAlias("portal")
 public class PortalCalculatorCommand extends BaseCommand
 {
-    private Plugin plugin;
-    private String tag = "&8[&6Portal&8]";
-
-    public PortalCalculatorCommand(Plugin plugin)
-    {
-        this.plugin = plugin;
-    }
+    private final String tag = "&8[&6Portal&8]";
 
     @Default
     public void onPortal(Player player)

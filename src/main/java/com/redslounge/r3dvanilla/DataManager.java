@@ -20,20 +20,30 @@ public class DataManager
         return dataManager;
     }
 
-    private int noteLimit;
-    private HashMap<UUID, RedPlayer> players = new HashMap<>();
+    private final HashMap<UUID, RedPlayer> players = new HashMap<>();
+    private final ArrayList<Player> afkPlayers = new ArrayList<>();
+    private final ArrayList<Player> sleepingPlayers = new ArrayList<>();
     private int afkTimer;
-    private ArrayList<Player> afkPlayers = new ArrayList<>();
-    private ArrayList<Player> sleepingPlayers = new ArrayList<>();
-    private int sleepingID;
-    private boolean sleepVote;
-    private int sleepPercentage;
+    private int noteLimit;
     private int sleepCooldown;
+    private int sleepingID;
+    private int sleepPercentage;
     private boolean defaultMessagePing;
+    private boolean sleepVote;
+
+    public HashMap<UUID, RedPlayer> getPlayers()
+    {
+        return players;
+    }
 
     public ArrayList<Player> getAfkPlayers()
     {
         return afkPlayers;
+    }
+
+    public ArrayList<Player> getSleepingPlayers()
+    {
+        return sleepingPlayers;
     }
 
     public int getAfkTimer()
@@ -56,24 +66,14 @@ public class DataManager
         this.noteLimit = noteLimit;
     }
 
-    public HashMap<UUID, RedPlayer> getPlayers()
+    public int getSleepCooldown()
     {
-        return players;
+        return sleepCooldown;
     }
 
-    public void setPlayers(HashMap<UUID, RedPlayer> players)
+    public void setSleepCooldown(int sleepCooldown)
     {
-        this.players = players;
-    }
-
-    public ArrayList<Player> getSleepingPlayers()
-    {
-        return sleepingPlayers;
-    }
-
-    public void setSleepingPlayers(ArrayList<Player> sleepingPlayers)
-    {
-        this.sleepingPlayers = sleepingPlayers;
+        this.sleepCooldown = sleepCooldown;
     }
 
     public int getSleepingID()
@@ -86,16 +86,6 @@ public class DataManager
         this.sleepingID = sleepingID;
     }
 
-    public boolean isSleepVote()
-    {
-        return sleepVote;
-    }
-
-    public void setSleepVote(boolean sleepVote)
-    {
-        this.sleepVote = sleepVote;
-    }
-
     public int getSleepPercentage()
     {
         return sleepPercentage;
@@ -106,16 +96,6 @@ public class DataManager
         this.sleepPercentage = sleepPercentage;
     }
 
-    public int getSleepCooldown()
-    {
-        return sleepCooldown;
-    }
-
-    public void setSleepCooldown(int sleepCooldown)
-    {
-        this.sleepCooldown = sleepCooldown;
-    }
-
     public boolean isDefaultMessagePing()
     {
         return defaultMessagePing;
@@ -124,5 +104,15 @@ public class DataManager
     public void setDefaultMessagePing(boolean defaultMessagePing)
     {
         this.defaultMessagePing = defaultMessagePing;
+    }
+
+    public boolean isSleepVote()
+    {
+        return sleepVote;
+    }
+
+    public void setSleepVote(boolean sleepVote)
+    {
+        this.sleepVote = sleepVote;
     }
 }
