@@ -15,6 +15,7 @@ public class RedPlayer
     {
         this.messagePing = messagePing;
         this.notes = notes;
+        afk = false;
     }
 
     public boolean isAfk()

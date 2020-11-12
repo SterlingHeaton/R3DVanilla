@@ -29,6 +29,7 @@ public class DataManager
     private boolean sleepVote;
     private int sleepPercentage;
     private int sleepCooldown;
+    private boolean defaultMessagePing;
 
     public ArrayList<Player> getAfkPlayers()
     {
@@ -113,5 +114,15 @@ public class DataManager
     public void setSleepCooldown(int sleepCooldown)
     {
         this.sleepCooldown = sleepCooldown;
+    }
+
+    public boolean isDefaultMessagePing()
+    {
+        return defaultMessagePing;
+    }
+
+    public void setDefaultMessagePing(boolean defaultMessagePing)
+    {
+        this.defaultMessagePing = defaultMessagePing;
     }
 }

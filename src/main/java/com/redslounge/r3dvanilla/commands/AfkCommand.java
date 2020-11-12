@@ -37,7 +37,7 @@ public class AfkCommand extends BaseCommand
         {
             if(redPlayer.isAfk() || plugin.getServer().getScheduler().isCurrentlyRunning(redPlayer.getAfkId()))
             {
-                Bukkit.broadcastMessage(Utils.color(Utils.getTeamColor(player) + " &7&ois no longer AFK"));
+                Bukkit.broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois back from being AFK"));
                 player.setPlayerListName(player.getName());
                 redPlayer.setAfk(false);
                 dataManager.getAfkPlayers().remove(player);

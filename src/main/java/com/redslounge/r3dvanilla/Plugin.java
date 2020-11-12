@@ -7,12 +7,17 @@ import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
 import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
 import com.redslounge.r3dvanilla.events.*;
 import com.redslounge.r3dvanilla.main.AfkTasks;
+import com.redslounge.r3dvanilla.models.RedPlayer;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class Plugin extends JavaPlugin
 {
@@ -62,6 +67,7 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new MessagePingCommand());
         commandManager.registerCommand(new AfkCommand(this));
         commandManager.registerCommand(new SleepCommand(this));
+        commandManager.registerCommand(new RedAnalytics());
     }
 
     private void setupEvents()
@@ -74,13 +80,45 @@ public class Plugin extends JavaPlugin
 
     private void loadConfig()
     {
+        DataManager dataManager = DataManager.getInstance();
+        dataManager.setNoteLimit(config.getInt("noteLimit"));
+        dataManager.setDefaultMessagePing(config.getBoolean("defaultMessagePing"));
+        dataManager.setSleepCooldown(config.getInt("sleepCooldown"));
+        dataManager.setSleepPercentage(config.getInt("sleepPercent"));
+        dataManager.setAfkTimer(config.getInt("afkTimer"));
 
+        ConfigurationSection section = players.getConfigurationSection("");
+
+        for(String playerSectionKey : section.getKeys(false))
+        {
+            UUID playerUUID = UUID.fromString(playerSectionKey);
+            boolean messagePing = players.getBoolean(playerUUID + ".messagePing");
+            List<String> notes = new ArrayList<>(players.getStringList(playerUUID + ".notes"));
+            RedPlayer redPlayer = new RedPlayer(messagePing, notes);
+
+            dataManager.getPlayers().put(playerUUID, redPlayer);
+        }
     }
 
 
     @Override
     public void onDisable()
     {
-//        config.saveSettings();
+        DataManager dataManager = DataManager.getInstance();
+        for(UUID playerUUID : dataManager.getPlayers().keySet())
+        {
+            players.set(playerUUID + ".notes", dataManager.getPlayers().get(playerUUID).getNotes());
+            players.set(playerUUID + ".messagePing", dataManager.getPlayers().get(playerUUID).hasMessagePing());
+        }
+
+        try
+        {
+            players.save(playersFile);
+        }
+        catch(IOException e)
+        {
+            this.getServer().getLogger().severe("Failed to save players.yml");
+            this.getServer().getLogger().severe(e.toString());
+        }
     }
 }

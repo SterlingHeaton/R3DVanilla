@@ -11,6 +11,8 @@ import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 @CommandAlias("cancelsleep")
 public class SleepCommand extends BaseCommand
 {
@@ -46,7 +48,9 @@ public class SleepCommand extends BaseCommand
 
         plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> dataManager.setSleepVote(false), 20 * dataManager.getSleepCooldown());
 
-        for(Player sleepingPlayer : dataManager.getSleepingPlayers())
+        ArrayList<Player> tempSleepingPlayers = new ArrayList<>(dataManager.getSleepingPlayers());
+
+        for(Player sleepingPlayer : tempSleepingPlayers)
         {
             GameMode originalGameMode = sleepingPlayer.getGameMode();
             sleepingPlayer.setGameMode(GameMode.SURVIVAL);

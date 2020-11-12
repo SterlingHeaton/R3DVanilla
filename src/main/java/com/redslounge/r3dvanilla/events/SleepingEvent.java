@@ -33,6 +33,11 @@ public class SleepingEvent implements Listener
             return;
         }
 
+        if(!event.getBedEnterResult().equals(PlayerBedEnterEvent.BedEnterResult.OK))
+        {
+            return;
+        }
+
         dataManager.getSleepingPlayers().add(event.getPlayer());
 
         if(dataManager.isSleepVote())

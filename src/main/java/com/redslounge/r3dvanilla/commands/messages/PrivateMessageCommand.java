@@ -2,6 +2,7 @@ package com.redslounge.r3dvanilla.commands.messages;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Utils;
@@ -21,8 +22,17 @@ public class PrivateMessageCommand extends BaseCommand
     }
 
     @Default
-    private void onMessagePlayer(Player player, Player targetPlayer, String[] args)
+    @CommandCompletion("@players")
+    private void onMessagePlayer(Player player, String targetPlayerString, String[] args)
     {
+        Player targetPlayer = plugin.getServer().getPlayer(targetPlayerString);
+
+        if(targetPlayer == null)
+        {
+            player.sendMessage(Utils.color("&cPlayer offline or misspelled."));
+            return;
+        }
+
         String message = Utils.buildMessage(args, 0);
 
         if(player.equals(targetPlayer))
