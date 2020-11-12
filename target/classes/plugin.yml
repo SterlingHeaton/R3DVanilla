@@ -1,29 +1,5 @@
 name: R3DVanilla
-main: com.redslounge.r3dvanilla.main.Vanilla
-version: 1.3
-author: Sterling (Redstonehax)
-description: Enhancements for vanilla SMP
-commands:
-  afk:
-    description: Mark yourself as afk.
-  message:
-    description: Private message others on the server.
-    aliases: [m, msg, tell, w]
-  reply:
-    description: Private message the last person who messaged you.
-    aliases: [r]
-  note:
-    description: Add in-game notes to your server.
-  notes:
-    description: View all of your notes.
-  cancelsleep:
-    description: Used for single player sleep.
-  messageping:
-    description: Toggle the cute noise when someone messages you.
-  bugreport:
-    description: Send me your bug reports and feature requests!
-    aliases: [featurerequest]
-  redanalytics:
-    description: I'm a figment of your imagination.
-  portal:
-    description: Automatically calculates the coordinates for your portal.
+main: com.redslounge.r3dvanilla.Plugin
+version: 3.0
+author: Sterling (@sterlingheaton)
+description: Simple additions for vanilla
