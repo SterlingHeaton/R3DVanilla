@@ -8,4 +8,4 @@ noteLimit: 10
 defaultMessagePing: true
 sleepCooldown: 300
 sleepPercent: 51
-afkTimer: 10
+afkTimer: 300

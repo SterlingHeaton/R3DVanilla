@@ -44,7 +44,7 @@ public class AfkTasks
                 redPlayer.setAfkId(plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () ->
                 {
                     Bukkit.broadcastMessage(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now AFK"));
-                    player.setPlayerListName(Utils.color("&7afk -> " + player.getName()));
+                    player.setPlayerListName(Utils.color("&7" + player.getName() + " (afk)"));
                     redPlayer.setAfk(true);
                     dataManager.getAfkPlayers().add(player);
                 }, 20 * dataManager.getAfkTimer()));

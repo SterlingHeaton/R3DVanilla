@@ -33,7 +33,7 @@ public class NotesCommand extends BaseCommand
         DataManager dataManager = DataManager.getInstance();
         RedPlayer redPlayer = dataManager.getPlayers().get(player.getUniqueId());
 
-        if(redPlayer.getNotes().size() > dataManager.getNoteLimit())
+        if(redPlayer.getNotes().size() >= dataManager.getNoteLimit())
         {
             player.sendMessage(Utils.color(tag + " &cYou have run out of room for more notes."));
             return;
