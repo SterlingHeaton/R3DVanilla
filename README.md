@@ -29,3 +29,6 @@ Minecraft plugin that adds various features specifically designed for the Everne
  >/messageping
  
  **Anti-Enderman grief** - Stops endermen from picking up blocks.
+ 
+ ## Download
+ Latest (1.16.x): https://drive.google.com/uc?export=download&id=1fuGddKEfaF0aGxOYBiPxzYvONOjGQ8gq
