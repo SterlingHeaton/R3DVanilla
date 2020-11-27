@@ -7,7 +7,9 @@ Minecraft plugin that adds various features specifically designed for the Everne
  
  **In-game notes** - Save information in-game with a command and view them at any time. You can add up to 10 notes (by default) and delete ones you don't want.
  >/note add \<note\>
+ 
  >/note delete \<note number\>
+ 
  >/note view
  
  **Portal calculator** - Easily see where to build your portal in the nether or the overworld (depending on what dimension you’re in).
