@@ -18,9 +18,12 @@ Minecraft plugin that adds various features specifically designed for the Everne
  
  **Revamped private messages** - Better private messages with revamped colors for easy reading, a sound notification when you receive a message, and a quick reply to the last person that messaged you. You can also enable or disable the sound notification with a command.
  >/message \<player\> \<message\>
- >Different aliases: /msg /m /whisper /w /tell
- >/reply \<message\>
- >Different alias: /r
+ > > Different aliases: /msg /m /whisper /w /tell
+ 
+ 
+ > /reply \<message\>
+ > > Different alias: /r
+ 
  >/messageping
  
  **Anti-Enderman grief** - Stops endermen from picking up blocks.
