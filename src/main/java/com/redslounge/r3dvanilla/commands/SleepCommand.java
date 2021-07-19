@@ -7,6 +7,7 @@ import co.aikar.commands.annotation.Private;
 import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -54,7 +55,7 @@ public class SleepCommand extends BaseCommand
             sleepingPlayer.setGameMode(GameMode.SURVIVAL);
             sleepingPlayer.damage(0);
             sleepingPlayer.setGameMode(originalGameMode);
-            sleepingPlayer.sendMessage(Utils.color(tag + " " + Utils.getTeamColor(player) + player.getName() + " &cdoesn't want you to sleep, enabling majority vote."));
+            Bukkit.broadcastMessage(Utils.color(tag + " " + Utils.getTeamColor(player) + player.getName() + " &cdoesn't want people to sleep, enabling majority vote."));
         }
     }
 }
