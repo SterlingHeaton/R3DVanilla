@@ -2,10 +2,11 @@ package com.redslounge.r3dvanilla;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.redslounge.r3dvanilla.commands.*;
-import com.redslounge.r3dvanilla.commands.messages.MessagePingCommand;
-import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
-import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
-import com.redslounge.r3dvanilla.events.*;
+import com.redslounge.r3dvanilla.commands.messages.*;
+import com.redslounge.r3dvanilla.events.AddNewPlayer;
+import com.redslounge.r3dvanilla.events.AfkEvents;
+import com.redslounge.r3dvanilla.events.EndermanEvent;
+import com.redslounge.r3dvanilla.events.SleepingEvent;
 import com.redslounge.r3dvanilla.main.AfkTasks;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.configuration.ConfigurationSection;
@@ -97,7 +98,6 @@ public class Plugin extends JavaPlugin
             dataManager.getPlayers().put(playerUUID, redPlayer);
         }
     }
-
 
     @Override
     public void onDisable()
