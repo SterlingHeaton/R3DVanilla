@@ -32,7 +32,7 @@ public class SleepCommand extends BaseCommand
 
         if(dataManager.getSleepingPlayers().isEmpty())
         {
-            player.sendMessage(Utils.color(tag + " &cNo one is sleeping you silly boi."));
+            player.sendMessage(Utils.color(tag + " &cNo one is sleeping you sussy baka."));
             return;
         }
 
