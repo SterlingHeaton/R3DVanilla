@@ -1,6 +1,6 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.DataManager;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

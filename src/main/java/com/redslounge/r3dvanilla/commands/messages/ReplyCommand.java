@@ -3,7 +3,7 @@ package com.redslounge.r3dvanilla.commands.messages;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
-import com.redslounge.r3dvanilla.DataManager;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.models.RedPlayer;

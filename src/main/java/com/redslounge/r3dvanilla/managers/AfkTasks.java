@@ -1,6 +1,5 @@
-package com.redslounge.r3dvanilla.main;
+package com.redslounge.r3dvanilla.managers;
 
-import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.models.RedPlayer;

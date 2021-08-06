@@ -4,7 +4,7 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Private;
-import com.redslounge.r3dvanilla.DataManager;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import org.bukkit.Bukkit;

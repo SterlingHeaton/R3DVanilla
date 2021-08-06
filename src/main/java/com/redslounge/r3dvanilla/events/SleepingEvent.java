@@ -1,6 +1,6 @@
 package com.redslounge.r3dvanilla.events;
 
-import com.redslounge.r3dvanilla.DataManager;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import net.md_5.bungee.api.chat.ClickEvent;

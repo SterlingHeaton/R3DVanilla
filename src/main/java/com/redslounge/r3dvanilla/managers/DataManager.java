@@ -1,4 +1,4 @@
-package com.redslounge.r3dvanilla;
+package com.redslounge.r3dvanilla.managers;
 
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.entity.Player;
