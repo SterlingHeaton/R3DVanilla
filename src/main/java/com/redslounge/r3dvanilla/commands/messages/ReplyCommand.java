@@ -10,16 +10,29 @@ import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+/**
+ * This class defines and adds functionaltiy to reply command.
+ *
+ * @author Sterling (@sterlingheaton)
+ */
 @CommandAlias("reply|r")
 public class ReplyCommand extends BaseCommand
 {
+    /**
+     * This command is used to reply to the last person who messaged you.
+     *
+     * @param player Automatic input from the player who executed the command
+     * @param args   Input for the message the player wants to send
+     */
     @Default
     @CommandCompletion("@nothing")
     public void onReply(Player player, String[] args)
     {
+        // Variables used to access player data.
         DataManager dataManager = DataManager.getInstance();
         RedPlayer redPlayer = dataManager.getPlayers().get(player.getUniqueId());
 
+        // Test to see if another player messaged this player and if they're online.
         if(redPlayer.getReplyTo() == null)
         {
             player.sendMessage(Utils.color(dataManager.getReplyTag() + "&cNo one has messaged you!"));
@@ -35,6 +48,7 @@ public class ReplyCommand extends BaseCommand
             return;
         }
 
+        // Update variables, send both players a message, and play a sound for the targetplayer if they have it enabled.
         String message = Utils.buildMessage(args, 0);
         targetRedPlayer.setReplyTo(redPlayer);
 

@@ -8,16 +8,28 @@ import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+/**
+ * This class defines and adds functionality to messageping and it's subcommand to change the sound.
+ *
+ * @author Sterling (@sterlingheaton)
+ */
 @CommandAlias("messageping")
 public class MessagePingCommand extends BaseCommand
 {
+    /**
+     * This command is used to toggle the sound that plays when you get a message.
+     *
+     * @param player Automatic input from the player who executed the command
+     */
     @Default
     @CommandCompletion("@nothing")
     public void onMessagePing(Player player)
     {
+        // Variables used to access player data.
         DataManager dataManager = DataManager.getInstance();
         RedPlayer redPlayer = dataManager.getPlayers().get(player.getUniqueId());
 
+        // Changes boolean and sends player a message.
         if(redPlayer.hasMessagePing())
         {
             redPlayer.setMessagePing(false);
@@ -30,15 +42,24 @@ public class MessagePingCommand extends BaseCommand
         }
     }
 
+    /**
+     * This command is used to select a different sound and pitch that you hear when someone messages you.
+     *
+     * @param player Automatic input from the player who executed the command
+     * @param sound  Input for specific sound
+     * @param pitch  Input for specific pitch
+     */
     @Subcommand("set")
     @Syntax("<Sound> <Pitch>")
     @CommandCompletion("@sounds @nothing")
     public void onSetSound(Player player, String sound, float pitch)
     {
+        // Variables used to access player data.
         DataManager dataManager = DataManager.getInstance();
         RedPlayer redPlayer = dataManager.getPlayers().get(player.getUniqueId());
         Sound pingSound;
 
+        // Test to see if inputs are correct.
         try
         {
             pingSound = Sound.valueOf(sound.toUpperCase());
@@ -55,6 +76,7 @@ public class MessagePingCommand extends BaseCommand
             return;
         }
 
+        // Update variables and send player a message.
         redPlayer.setMessageSound(pingSound);
         redPlayer.setMessageSoundPitch(pitch);
 
