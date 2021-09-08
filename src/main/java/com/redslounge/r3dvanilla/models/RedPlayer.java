@@ -1,6 +1,8 @@
 package com.redslounge.r3dvanilla.models;
 
 import org.bukkit.Sound;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,8 @@ public class RedPlayer
     private float messageSoundPitch;
     private final UUID playerUUID;
 
+    private boolean ghostAfk;
+
     public RedPlayer(UUID playerUUID, boolean messagePing, Sound messageSound, float messageSoundPitch, List<String> notes)
     {
         this.playerUUID = playerUUID;
@@ -25,6 +29,16 @@ public class RedPlayer
         this.messageSoundPitch = messageSoundPitch;
         this.notes = notes;
         afk = false;
+    }
+
+    public boolean isGhostAfk()
+    {
+        return ghostAfk;
+    }
+
+    public void setGhostAfk(boolean ghostAfk)
+    {
+        this.ghostAfk = ghostAfk;
     }
 
     public UUID getPlayerUUID()

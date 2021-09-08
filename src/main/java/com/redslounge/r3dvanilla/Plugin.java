@@ -9,7 +9,7 @@ import com.redslounge.r3dvanilla.events.AddNewPlayer;
 import com.redslounge.r3dvanilla.events.AfkEvents;
 import com.redslounge.r3dvanilla.events.EndermanEvent;
 import com.redslounge.r3dvanilla.events.SleepingEvent;
-import com.redslounge.r3dvanilla.managers.AfkTasks;
+import com.redslounge.r3dvanilla.managers.AfkManager;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Sound;
@@ -58,7 +58,7 @@ public class Plugin extends JavaPlugin
         setupEvents();
         loadConfig();
 
-        new AfkTasks(this);
+        new AfkManager(this);
     }
 
     private void setupCommands()
