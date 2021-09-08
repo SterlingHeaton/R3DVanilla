@@ -21,3 +21,5 @@ defaultMessageSoundPitch: 2
 messageTag: '&8[&6Messages&8]'
 replyTag: '&8[&6Reply&8]'
 messagePingTag: '&8[&6Message Ping&8]'
+
+portalTag: '&8[&6Portal&8]'

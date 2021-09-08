@@ -38,6 +38,18 @@ public class DataManager
     private Sound defaultMessageSound;
     private float defaultMessageSoundPitch;
 
+    private String portalTag;
+
+    public String getPortalTag()
+    {
+        return portalTag;
+    }
+
+    public void setPortalTag(String portalTag)
+    {
+        this.portalTag = portalTag;
+    }
+
     public void setMessageTag(String messageTag)
     {
         this.messageTag = messageTag;
