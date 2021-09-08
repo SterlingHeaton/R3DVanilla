@@ -11,7 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 /**
- * This class defines and adds functionaltiy to reply command.
+ * This class defines and adds functionality to reply command.
  *
  * @author Sterling (@sterlingheaton)
  */

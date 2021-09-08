@@ -9,7 +9,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 /**
- * This class defines and adds functionaltiy to the portal calculator command.
+ * This class defines and adds functionality to the portal calculator command.
  *
  * @author Sterling (@sterlingheaton)
  */
@@ -42,7 +42,7 @@ public class PortalCalculatorCommand extends BaseCommand
     }
 
     /**
-     * This command is used by players to calculate the portal location based on x and z input, dimention is based on where the player is.
+     * This command is used by players to calculate the portal location based on x and z input, dimension is based on where the player is.
      *
      * @param player Automatic input from the player who executed the command
      * @param x      Input for the x coordinate

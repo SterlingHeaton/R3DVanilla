@@ -1,8 +1,6 @@
 package com.redslounge.r3dvanilla.models;
 
 import org.bukkit.Sound;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.List;
 import java.util.UUID;

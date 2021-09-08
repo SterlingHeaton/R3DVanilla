@@ -12,7 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 /**
- * This class defines and adds functionaltiy to private message commands.
+ * This class defines and adds functionality to private message commands.
  *
  * @author Sterling (@sterlingheaton)
  */
