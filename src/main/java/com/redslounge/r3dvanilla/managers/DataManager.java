@@ -1,6 +1,7 @@
 package com.redslounge.r3dvanilla.managers;
 
 import com.redslounge.r3dvanilla.models.RedPlayer;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -30,6 +31,62 @@ public class DataManager
     private int sleepPercentage;
     private boolean defaultMessagePing;
     private boolean sleepVote;
+
+    private String messageTag;
+    private String replyTag;
+    private String messagePingTag;
+    private Sound defaultMessageSound;
+    private float defaultMessageSoundPitch;
+
+    public void setMessageTag(String messageTag)
+    {
+        this.messageTag = messageTag;
+    }
+
+    public void setReplyTag(String replyTag)
+    {
+        this.replyTag = replyTag;
+    }
+
+    public void setMessagePingTag(String messagePingTag)
+    {
+        this.messagePingTag = messagePingTag;
+    }
+
+    public Sound getDefaultMessageSound()
+    {
+        return defaultMessageSound;
+    }
+
+    public void setDefaultMessageSound(Sound defaultMessageSound)
+    {
+        this.defaultMessageSound = defaultMessageSound;
+    }
+
+    public float getDefaultMessageSoundPitch()
+    {
+        return defaultMessageSoundPitch;
+    }
+
+    public void setDefaultMessageSoundPitch(float defaultMessageSoundPitch)
+    {
+        this.defaultMessageSoundPitch = defaultMessageSoundPitch;
+    }
+
+    public String getReplyTag()
+    {
+        return replyTag;
+    }
+
+    public String getMessagePingTag()
+    {
+        return messagePingTag;
+    }
+
+    public String getMessageTag()
+    {
+        return messageTag;
+    }
 
     public HashMap<UUID, RedPlayer> getPlayers()
     {

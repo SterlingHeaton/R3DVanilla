@@ -20,7 +20,11 @@ public class AddNewPlayer implements Listener
             return;
         }
 
-        RedPlayer redPlayer = new RedPlayer(dataManager.isDefaultMessagePing(), new ArrayList<>());
+        RedPlayer redPlayer = new RedPlayer(event.getPlayer().getUniqueId(),
+                dataManager.isDefaultMessagePing(),
+                dataManager.getDefaultMessageSound(),
+                dataManager.getDefaultMessageSoundPitch(),
+                new ArrayList<>());
         dataManager.getPlayers().put(event.getPlayer().getUniqueId(), redPlayer);
     }
 }

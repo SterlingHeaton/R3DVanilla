@@ -2,7 +2,9 @@ package com.redslounge.r3dvanilla;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.redslounge.r3dvanilla.commands.*;
-import com.redslounge.r3dvanilla.commands.messages.*;
+import com.redslounge.r3dvanilla.commands.messages.MessagePingCommand;
+import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
+import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
 import com.redslounge.r3dvanilla.events.AddNewPlayer;
 import com.redslounge.r3dvanilla.events.AfkEvents;
 import com.redslounge.r3dvanilla.events.EndermanEvent;
@@ -10,6 +12,7 @@ import com.redslounge.r3dvanilla.events.SleepingEvent;
 import com.redslounge.r3dvanilla.managers.AfkTasks;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
+import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -51,6 +54,7 @@ public class Plugin extends JavaPlugin
         players = YamlConfiguration.loadConfiguration(playersFile);
 
         setupCommands();
+        setupCommandCompletions();
         setupEvents();
         loadConfig();
 
@@ -62,12 +66,26 @@ public class Plugin extends JavaPlugin
         commandManager = new BukkitCommandManager(this);
         commandManager.registerCommand(new NotesCommand());
         commandManager.registerCommand(new PortalCalculatorCommand());
-        commandManager.registerCommand(new PrivateMessageCommand(this));
-        commandManager.registerCommand(new ReplyCommand(this));
+        commandManager.registerCommand(new PrivateMessageCommand());
+        commandManager.registerCommand(new ReplyCommand());
         commandManager.registerCommand(new MessagePingCommand());
         commandManager.registerCommand(new AfkCommand(this));
         commandManager.registerCommand(new SleepCommand(this));
         commandManager.registerCommand(new RedAnalytics());
+    }
+
+    private void setupCommandCompletions()
+    {
+        commandManager.getCommandCompletions().registerCompletion("sounds", c -> {
+
+            ArrayList<String> list = new ArrayList<>();
+
+            for(Sound sound : Sound.values())
+            {
+                list.add(sound.name());
+            }
+            return list;
+        });
     }
 
     private void setupEvents()
@@ -86,6 +104,11 @@ public class Plugin extends JavaPlugin
         dataManager.setSleepCooldown(config.getInt("sleepCooldown"));
         dataManager.setSleepPercentage(config.getInt("sleepPercent"));
         dataManager.setAfkTimer(config.getInt("afkTimer"));
+        dataManager.setDefaultMessageSound(Sound.valueOf(config.getString("defaultMessageSound")));
+        dataManager.setDefaultMessageSoundPitch((float) config.getDouble("defaultMessageSoundPitch"));
+        dataManager.setMessageTag(config.getString("messageTag") + " ");
+        dataManager.setReplyTag(config.getString("replyTag") + " ");
+        dataManager.setMessagePingTag(config.getString("messagePingTag") + " ");
 
         ConfigurationSection section = players.getConfigurationSection("");
 
@@ -94,7 +117,9 @@ public class Plugin extends JavaPlugin
             UUID playerUUID = UUID.fromString(playerSectionKey);
             boolean messagePing = players.getBoolean(playerUUID + ".messagePing");
             List<String> notes = new ArrayList<>(players.getStringList(playerUUID + ".notes"));
-            RedPlayer redPlayer = new RedPlayer(messagePing, notes);
+            Sound sound = Sound.valueOf(players.getString(playerUUID + ".messageSound"));
+            float pitch = (float) players.getDouble(playerUUID + ".messageSoundPitch");
+            RedPlayer redPlayer = new RedPlayer(playerUUID, messagePing, sound, pitch, notes);
 
             dataManager.getPlayers().put(playerUUID, redPlayer);
         }
@@ -104,10 +129,13 @@ public class Plugin extends JavaPlugin
     public void onDisable()
     {
         DataManager dataManager = DataManager.getInstance();
-        for(UUID playerUUID : dataManager.getPlayers().keySet())
+
+        for(RedPlayer redPlayer : dataManager.getPlayers().values())
         {
-            players.set(playerUUID + ".notes", dataManager.getPlayers().get(playerUUID).getNotes());
-            players.set(playerUUID + ".messagePing", dataManager.getPlayers().get(playerUUID).hasMessagePing());
+            players.set(redPlayer.getPlayerUUID() + ".notes", redPlayer.getNotes());
+            players.set(redPlayer.getPlayerUUID() + ".messagePing", redPlayer.hasMessagePing());
+            players.set(redPlayer.getPlayerUUID() + ".messageSound", redPlayer.getMessageSound().name());
+            players.set(redPlayer.getPlayerUUID() + ".messageSoundPitch", redPlayer.getMessageSoundPitch());
         }
 
         try
