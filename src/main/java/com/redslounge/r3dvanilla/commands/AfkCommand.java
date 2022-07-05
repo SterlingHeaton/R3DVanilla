@@ -1,10 +1,7 @@
 package com.redslounge.r3dvanilla.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.managers.AfkManager;
 import com.redslounge.r3dvanilla.managers.DataManager;
@@ -33,6 +30,7 @@ public class AfkCommand extends BaseCommand
      * @param player Automatic input from the player who executed the command
      */
     @Default
+    @CommandCompletion("@nothing")
     public void onAfk(Player player)
     {
         // Variables to access player data.
@@ -59,6 +57,7 @@ public class AfkCommand extends BaseCommand
      * @param player Automatic input from the player who executed the command
      */
     @Subcommand("ghost")
+    @CommandCompletion("@nothing")
     @CommandPermission("r3dvanilla.commands.afk.ghost")
     public void onGhostAfk(Player player)
     {

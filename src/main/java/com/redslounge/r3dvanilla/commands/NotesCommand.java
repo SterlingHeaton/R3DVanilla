@@ -2,6 +2,7 @@ package com.redslounge.r3dvanilla.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import com.redslounge.r3dvanilla.managers.DataManager;
@@ -21,6 +22,7 @@ public class NotesCommand extends BaseCommand
     }
 
     @Subcommand("add")
+    @CommandCompletion("@nothing")
     public void onNoteAdd(Player player, String[] args)
     {
         DataManager dataManager = DataManager.getInstance();
@@ -37,6 +39,7 @@ public class NotesCommand extends BaseCommand
     }
 
     @Subcommand("delete")
+    @CommandCompletion("@notes @nothing")
     public void onNoteDelete(Player player, int noteNumber)
     {
         DataManager dataManager =  DataManager.getInstance();
@@ -53,6 +56,7 @@ public class NotesCommand extends BaseCommand
     }
 
     @Subcommand("view")
+    @CommandCompletion("@nothing")
     public void onViewNotes(Player player)
     {
         DataManager dataManager = DataManager.getInstance();

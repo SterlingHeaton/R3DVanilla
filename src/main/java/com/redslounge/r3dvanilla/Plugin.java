@@ -76,7 +76,8 @@ public class Plugin extends JavaPlugin
 
     private void setupCommandCompletions()
     {
-        commandManager.getCommandCompletions().registerCompletion("sounds", c -> {
+        commandManager.getCommandCompletions().registerCompletion("sounds", c ->
+        {
 
             ArrayList<String> list = new ArrayList<>();
 
@@ -84,6 +85,19 @@ public class Plugin extends JavaPlugin
             {
                 list.add(sound.name());
             }
+            return list;
+        });
+
+        commandManager.getCommandCompletions().registerCompletion("notes", c ->
+        {
+            ArrayList<String> list = new ArrayList<>();
+
+            for(int i = 0; i < DataManager.getInstance().getPlayers().get(c.getPlayer().getUniqueId()).getNotes().size(); i++)
+            {
+                list.add(String.valueOf(i+1));
+            }
+            list.add("all");
+
             return list;
         });
     }
