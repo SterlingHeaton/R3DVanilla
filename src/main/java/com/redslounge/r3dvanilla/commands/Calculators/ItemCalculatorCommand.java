@@ -7,7 +7,7 @@ import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
 import org.bukkit.entity.Player;
 
-@CommandAlias("itemcalculator")
+@CommandAlias("itemcalculator|itemcalc")
 public class ItemCalculatorCommand extends BaseCommand
 {
     @Default
@@ -28,27 +28,27 @@ public class ItemCalculatorCommand extends BaseCommand
         {
             if(calculationPart.contains("sb"))
             {
-                int amount = Integer.valueOf(calculationPart.replace("sb", ""));
+                int amount = Integer.parseInt(calculationPart.replace("sb", ""));
                 total += amount * stackAmount * 27;
             }
             else if(calculationPart.contains("dc"))
             {
-                int amount = Integer.valueOf(calculationPart.replace("dc", ""));
+                int amount = Integer.parseInt(calculationPart.replace("dc", ""));
                 total += amount * stackAmount * 54;
             }
             else if(calculationPart.contains("sc"))
             {
-                int amount = Integer.valueOf(calculationPart.replace("sc", ""));
+                int amount = Integer.parseInt(calculationPart.replace("sc", ""));
                 total += amount * stackAmount * 27;
             }
             else if(calculationPart.contains("st"))
             {
-                int amount = Integer.valueOf(calculationPart.replace("st", ""));
+                int amount = Integer.parseInt(calculationPart.replace("st", ""));
                 total += amount * stackAmount;
             }
             else
             {
-                int amount = Integer.valueOf(calculationPart);
+                int amount = Integer.parseInt(calculationPart);
                 total += amount;
             }
 

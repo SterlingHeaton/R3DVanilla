@@ -7,7 +7,7 @@ import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
 import org.bukkit.entity.Player;
 
-@CommandAlias("stackcalculator")
+@CommandAlias("stackcalculator|stackcalc")
 public class StackCalculatorCommand extends BaseCommand
 {
     @Default
