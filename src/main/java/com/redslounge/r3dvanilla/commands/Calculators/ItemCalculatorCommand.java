@@ -51,8 +51,16 @@ public class ItemCalculatorCommand extends BaseCommand
             }
             else
             {
-                int amount = Integer.parseInt(calculationPart);
-                total += amount;
+                try
+                {
+                    int amount = Integer.parseInt(calculationPart);
+                    total += amount;
+                }
+                catch(NumberFormatException e)
+                {
+                    player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&cInvalid format."));
+                    return;
+                }
             }
         }
         player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&7" + calculation + " &ais equal to: &6" + total));
