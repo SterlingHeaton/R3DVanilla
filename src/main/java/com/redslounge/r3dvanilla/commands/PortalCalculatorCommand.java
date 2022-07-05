@@ -30,6 +30,7 @@ public class PortalCalculatorCommand extends BaseCommand
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
             player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(player.getLocation(), true)));
+            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aHub Side:&7 " + getNetherHubSide(player.getLocation())));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
@@ -62,6 +63,7 @@ public class PortalCalculatorCommand extends BaseCommand
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
             player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(location, true)));
+            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aHub Side:&7 " + getNetherHubSide(location)));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
@@ -94,5 +96,32 @@ public class PortalCalculatorCommand extends BaseCommand
             location.setZ(location.getZ() * 8);
         }
         return location.getBlockX() + "x " + location.getBlockZ() + "z";
+    }
+
+    /**
+     * Method is being used to determin the correct side of the netherhub someone should build.
+     *
+     * @param location The location of the nether portal in question.
+     *
+     * @return Returns a string of which cardinal direction they should build.
+     */
+    private String getNetherHubSide(Location location)
+    {
+        if(Math.abs(location.getX()) > Math.abs(location.getZ()))
+        {
+            if(location.getX() > 0)
+            {
+                return "East";
+            }
+            return "West";
+        }
+        else
+        {
+            if(location.getZ() > 0)
+            {
+                return "South";
+            }
+            return "North";
+        }
     }
 }
