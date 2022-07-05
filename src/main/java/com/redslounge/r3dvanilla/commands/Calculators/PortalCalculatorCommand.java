@@ -1,4 +1,4 @@
-package com.redslounge.r3dvanilla.commands;
+package com.redslounge.r3dvanilla.commands.Calculators;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;

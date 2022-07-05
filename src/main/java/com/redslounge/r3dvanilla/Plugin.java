@@ -2,6 +2,9 @@ package com.redslounge.r3dvanilla;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.redslounge.r3dvanilla.commands.*;
+import com.redslounge.r3dvanilla.commands.Calculators.ItemCalculatorCommand;
+import com.redslounge.r3dvanilla.commands.Calculators.PortalCalculatorCommand;
+import com.redslounge.r3dvanilla.commands.Calculators.StackCalculatorCommand;
 import com.redslounge.r3dvanilla.commands.messages.MessagePingCommand;
 import com.redslounge.r3dvanilla.commands.messages.PrivateMessageCommand;
 import com.redslounge.r3dvanilla.commands.messages.ReplyCommand;
@@ -72,6 +75,8 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new AfkCommand(this));
         commandManager.registerCommand(new SleepCommand(this));
         commandManager.registerCommand(new RedAnalytics());
+        commandManager.registerCommand(new ItemCalculatorCommand());
+        commandManager.registerCommand(new StackCalculatorCommand());
     }
 
     private void setupCommandCompletions()
