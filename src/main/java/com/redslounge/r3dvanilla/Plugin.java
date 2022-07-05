@@ -96,12 +96,17 @@ public class Plugin extends JavaPlugin
         commandManager.getCommandCompletions().registerCompletion("notes", c ->
         {
             ArrayList<String> list = new ArrayList<>();
+            RedPlayer redPlayer = DataManager.getInstance().getPlayers().get(c.getPlayer().getUniqueId());
 
-            for(int i = 0; i < DataManager.getInstance().getPlayers().get(c.getPlayer().getUniqueId()).getNotes().size(); i++)
+            for(int i = 0; i < redPlayer.getNotes().size(); i++)
             {
                 list.add(String.valueOf(i+1));
             }
-            list.add("all");
+
+            if(!redPlayer.getNotes().isEmpty())
+            {
+                list.add("all");
+            }
 
             return list;
         });
