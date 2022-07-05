@@ -129,6 +129,8 @@ public class Plugin extends JavaPlugin
         dataManager.setReplyTag(config.getString("replyTag") + " ");
         dataManager.setMessagePingTag(config.getString("messagePingTag") + " ");
         dataManager.setPortalTag(config.getString("portalTag") + " ");
+        dataManager.setItemCalculatorTag(config.getString("itemCalculatorTag") + " ");
+        dataManager.setStackCalculatorTag(config.getString("stackCalculatorTag") + " ");
 
         ConfigurationSection section = players.getConfigurationSection("");
 

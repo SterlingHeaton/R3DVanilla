@@ -39,6 +39,28 @@ public class DataManager
     private float defaultMessageSoundPitch;
 
     private String portalTag;
+    private String itemCalculatorTag;
+    private String stackCalculatorTag;
+
+    public String getItemCalculatorTag()
+    {
+        return itemCalculatorTag;
+    }
+
+    public void setItemCalculatorTag(String itemCalculatorTag)
+    {
+        this.itemCalculatorTag = itemCalculatorTag;
+    }
+
+    public String getStackCalculatorTag()
+    {
+        return stackCalculatorTag;
+    }
+
+    public void setStackCalculatorTag(String stackCalculatorTag)
+    {
+        this.stackCalculatorTag = stackCalculatorTag;
+    }
 
     public String getPortalTag()
     {

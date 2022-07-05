@@ -5,6 +5,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import org.bukkit.entity.Player;
 
 @CommandAlias("itemcalculator|itemcalc")
@@ -14,9 +15,11 @@ public class ItemCalculatorCommand extends BaseCommand
     @CommandCompletion("1|16|64 @nothing")
     public void onItemCalculator(Player player, int stackAmount, String calculation)
     {
+        DataManager dataManager = DataManager.getInstance();
+
         if(calculation.isEmpty())
         {
-            player.sendMessage(Utils.color("&cDidn't input a calculation for the calculator."));
+            player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&cDidn't input a calculation for the calculator."));
             return;
         }
 
@@ -51,8 +54,7 @@ public class ItemCalculatorCommand extends BaseCommand
                 int amount = Integer.parseInt(calculationPart);
                 total += amount;
             }
-
         }
-        player.sendMessage(Utils.color("&aTotal items: &6" + total));
+        player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&7" + calculation + " &ais equal to: &6" + total));
     }
 }

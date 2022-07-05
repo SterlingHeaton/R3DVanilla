@@ -23,3 +23,6 @@ replyTag: '&8[&6Reply&8]'
 messagePingTag: '&8[&6Message Ping&8]'
 
 portalTag: '&8[&6Portal&8]'
+
+itemCalculatorTag: '&8[&6ItemCalc&8]'
+stackCalculatorTag: '&8[&6StackCalc&8]'
