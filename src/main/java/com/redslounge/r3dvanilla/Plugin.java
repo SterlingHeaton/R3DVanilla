@@ -77,6 +77,7 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new RedAnalytics());
         commandManager.registerCommand(new ItemCalculatorCommand());
         commandManager.registerCommand(new StackCalculatorCommand());
+        commandManager.registerCommand(new LogoutCommand());
     }
 
     private void setupCommandCompletions()
