@@ -6,15 +6,13 @@ import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import co.aikar.idb.DB;
-import com.redslounge.r3dvanilla.Plugin;
-import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.Note;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.entity.Player;
 
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 @CommandAlias("note")
 public class NotesCommand extends BaseCommand

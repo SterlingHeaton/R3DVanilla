@@ -1,10 +1,8 @@
 package com.redslounge.r3dvanilla.events;
 
 import co.aikar.idb.DB;
-import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -42,7 +40,7 @@ public class AddNewPlayer implements Listener
         }
         catch(SQLException e)
         {
-
+            System.out.println(e);
         }
     }
 }

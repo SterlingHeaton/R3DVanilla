@@ -24,7 +24,6 @@ public class ItemCalculatorCommand extends BaseCommand
         }
 
         String[] calculationParts = calculation.split("\\+");
-
         int total = 0;
 
         for(String calculationPart : calculationParts)

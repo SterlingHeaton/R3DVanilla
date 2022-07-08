@@ -18,17 +18,13 @@ import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.Note;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -84,7 +80,6 @@ public class Plugin extends JavaPlugin
     {
         commandManager.getCommandCompletions().registerCompletion("sounds", c ->
         {
-
             ArrayList<String> list = new ArrayList<>();
 
             for(Sound sound : Sound.values())

@@ -16,7 +16,6 @@ public class AfkManager
     // Global variable to access bukkit runnable
     private final Plugin plugin;
 
-
     /**
      * Main constructor for this class that starts a repeating task that goes off every 1 second.
      *
