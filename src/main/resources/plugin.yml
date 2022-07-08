@@ -6,4 +6,4 @@ website: ${url}
 
 main: ${mainClass}
 
-api-version: 1.17
+api-version: 1.19
