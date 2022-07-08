@@ -37,9 +37,7 @@ public class MessagePingCommand extends BaseCommand
         {
             try
             {
-                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?",
-                        false,
-                        redPlayer.getPlayerUUID().toString());
+                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?", false, redPlayer.getPlayerUUID().toString());
                 redPlayer.setMessagePing(false);
                 player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&cDisabled!"));
             }
@@ -52,9 +50,7 @@ public class MessagePingCommand extends BaseCommand
         {
             try
             {
-                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?",
-                        true,
-                        redPlayer.getPlayerUUID().toString());
+                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?", true, redPlayer.getPlayerUUID().toString());
                 redPlayer.setMessagePing(true);
                 player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&aEnabled!"));
             }
@@ -112,7 +108,6 @@ public class MessagePingCommand extends BaseCommand
         catch(SQLException e)
         {
             System.out.println(e);
-
         }
     }
 }

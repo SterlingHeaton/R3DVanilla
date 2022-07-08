@@ -8,13 +8,26 @@ import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import org.bukkit.entity.Player;
 
+/**
+ * This command is for calculating how many items there are in a specified amount of inventories.
+ *
+ * @author Sterling (@sterlingheaton)
+ */
 @CommandAlias("itemcalculator|itemcalc")
 public class ItemCalculatorCommand extends BaseCommand
 {
+    /**
+     * Main command to calculate the amount of items from a stack based calculation string.
+     *
+     * @param player      The player who issued the command.
+     * @param stackAmount The max amount of items that are in the stack.
+     * @param calculation A string of numbers and set of letters that describes an inventory filled with a specified item.
+     */
     @Default
     @CommandCompletion("1|16|64 @nothing")
     public void onItemCalculator(Player player, int stackAmount, String calculation)
     {
+        // Grab the data manager and run tests to see if the command is valid.
         DataManager dataManager = DataManager.getInstance();
 
         if(calculation.isEmpty())
@@ -23,11 +36,19 @@ public class ItemCalculatorCommand extends BaseCommand
             return;
         }
 
+        // Split he main calculation string to figure out the different inputs.
         String[] calculationParts = calculation.split("\\+");
         int total = 0;
 
+        // Main loop to calculate the amount of items.
         for(String calculationPart : calculationParts)
         {
+            // Series of if statements to see what inventories were inputed.
+            // sb = shulker box
+            // dc = double chest
+            // sc = single chest
+            // st = stack
+            // else -> items
             if(calculationPart.contains("sb"))
             {
                 int amount = Integer.parseInt(calculationPart.replace("sb", ""));
@@ -62,6 +83,8 @@ public class ItemCalculatorCommand extends BaseCommand
                 }
             }
         }
+
+        // Send the player the item amount.
         player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&7" + calculation + " &ais equal to: &6" + total));
     }
 }

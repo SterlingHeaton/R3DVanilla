@@ -96,7 +96,7 @@ public class Plugin extends JavaPlugin
 
             for(int i = 0; i < redPlayer.getNotes().size(); i++)
             {
-                list.add(String.valueOf(i+1));
+                list.add(String.valueOf(i + 1));
             }
 
             if(!redPlayer.getNotes().isEmpty())

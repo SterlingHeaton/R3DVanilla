@@ -57,7 +57,7 @@ public class NotesCommand extends BaseCommand
     @CommandCompletion("@notes @nothing")
     public void onNoteDelete(Player player, int noteNumber)
     {
-        DataManager dataManager =  DataManager.getInstance();
+        DataManager dataManager = DataManager.getInstance();
         RedPlayer redPlayer = dataManager.getPlayers().get(player.getUniqueId());
 
         if(redPlayer.getNotes().size() < noteNumber || noteNumber < 0)
@@ -66,12 +66,12 @@ public class NotesCommand extends BaseCommand
             return;
         }
 
-        Note note = redPlayer.getNotes().get(noteNumber-1);
+        Note note = redPlayer.getNotes().get(noteNumber - 1);
 
         try
         {
             DB.executeUpdate("DELETE from NOTES where noteID = ?", note.getNoteID());
-            redPlayer.getNotes().remove(noteNumber-1);
+            redPlayer.getNotes().remove(noteNumber - 1);
             player.sendMessage(Utils.color(tag + " &aSuccessfully deleted your note!"));
         }
         catch(SQLException e)
@@ -97,7 +97,7 @@ public class NotesCommand extends BaseCommand
         player.sendMessage(Utils.color(tag + " &aPersonal Notes:"));
         for(int i = 0; i < redPlayer.getNotes().size(); i++)
         {
-            player.sendMessage(Utils.color("&a" + (i+1) + "&6. &7&o" + redPlayer.getNotes().get(i).getNote()));
+            player.sendMessage(Utils.color("&a" + (i + 1) + "&6. &7&o" + redPlayer.getNotes().get(i).getNote()));
         }
     }
 }
