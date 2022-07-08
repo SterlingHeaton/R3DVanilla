@@ -1,5 +1,9 @@
-name: R3DVanilla
-main: com.redslounge.r3dvanilla.Plugin
-version: 3.1
-author: Sterling (@sterlingheaton)
-description: Simple additions for vanilla
+name: ${name}
+author: ${author}
+description: ${description}
+version: ${version}
+website: ${url}
+
+main: ${mainClass}
+
+api-version: 1.19

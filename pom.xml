@@ -6,11 +6,18 @@
 
     <groupId>com.redslounge.maven</groupId>
     <artifactId>r3dvanilla</artifactId>
-    <version>3.0-RELEASE</version>
+    <version>4.0</version>
+
+    <name>R3DVanilla</name>
+    <description>Minecraft plugin that adds various features specifically designed for the Everneth server.</description>
+    <url>https://github.com/SterlingHeaton/R3DVanilla</url>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.17</maven.compiler.source>
+        <maven.compiler.target>1.17</maven.compiler.target>
+
+        <author>Sterling (@sterlingheaton)</author>
+        <mainClass>com.redslounge.r3dvanilla.Plugin</mainClass>
     </properties>
 
     <repositories>
@@ -29,13 +36,34 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.3-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--Annotation Command Framework API-->
         <dependency>
             <groupId>co.aikar</groupId>
             <artifactId>acf-bukkit</artifactId>
             <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--Intuitive Database Wrapper-->
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>idb-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
+        <!--Google GSON-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.7</version>
         </dependency>
     </dependencies>
 
@@ -76,5 +104,11 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

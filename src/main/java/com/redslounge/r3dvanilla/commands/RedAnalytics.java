@@ -3,8 +3,8 @@ package com.redslounge.r3dvanilla.commands;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
-import com.redslounge.r3dvanilla.DataManager;
 import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.managers.DataManager;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
