@@ -2,11 +2,14 @@ package com.redslounge.r3dvanilla.commands.messages;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
+import co.aikar.idb.DB;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+
+import java.sql.SQLException;
 
 /**
  * This class defines and adds functionality to messageping and it's subcommand to change the sound.
@@ -32,13 +35,33 @@ public class MessagePingCommand extends BaseCommand
         // Changes boolean and sends player a message.
         if(redPlayer.hasMessagePing())
         {
-            redPlayer.setMessagePing(false);
-            player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&cDisabled!"));
+            try
+            {
+                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?",
+                        false,
+                        redPlayer.getPlayerUUID().toString());
+                redPlayer.setMessagePing(false);
+                player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&cDisabled!"));
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e);
+            }
         }
         else
         {
-            redPlayer.setMessagePing(true);
-            player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&aEnabled!"));
+            try
+            {
+                DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?",
+                        true,
+                        redPlayer.getPlayerUUID().toString());
+                redPlayer.setMessagePing(true);
+                player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&aEnabled!"));
+            }
+            catch(SQLException e)
+            {
+                System.out.println(e);
+            }
         }
     }
 
@@ -77,9 +100,19 @@ public class MessagePingCommand extends BaseCommand
         }
 
         // Update variables and send player a message.
-        redPlayer.setMessageSound(pingSound);
-        redPlayer.setMessageSoundPitch(pitch);
+        try
+        {
+            DB.executeUpdate("UPDATE players SET messageSound = ?, messageSoundPitch = ?", pingSound.name(), pitch);
 
-        player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&aUpdated sound!"));
+            redPlayer.setMessageSound(pingSound);
+            redPlayer.setMessageSoundPitch(pitch);
+
+            player.sendMessage(Utils.color(dataManager.getMessagePingTag() + "&aUpdated sound!"));
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+
+        }
     }
 }

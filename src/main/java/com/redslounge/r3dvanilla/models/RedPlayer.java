@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class RedPlayer
 {
-    private final List<String> notes;
+    private final List<Note> notes;
     private int afkId;
     private boolean afk;
     private boolean messagePing;
@@ -19,7 +19,7 @@ public class RedPlayer
 
     private boolean ghostAfk;
 
-    public RedPlayer(UUID playerUUID, boolean messagePing, Sound messageSound, float messageSoundPitch, List<String> notes)
+    public RedPlayer(UUID playerUUID, boolean messagePing, Sound messageSound, float messageSoundPitch, List<Note> notes)
     {
         this.playerUUID = playerUUID;
         this.messagePing = messagePing;
@@ -74,7 +74,7 @@ public class RedPlayer
         this.replyTo = replyTo;
     }
 
-    public List<String> getNotes()
+    public List<Note> getNotes()
     {
         return notes;
     }

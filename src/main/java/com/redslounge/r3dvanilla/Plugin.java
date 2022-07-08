@@ -1,6 +1,7 @@
 package com.redslounge.r3dvanilla;
 
 import co.aikar.commands.BukkitCommandManager;
+import co.aikar.idb.*;
 import com.redslounge.r3dvanilla.commands.*;
 import com.redslounge.r3dvanilla.commands.Calculators.ItemCalculatorCommand;
 import com.redslounge.r3dvanilla.commands.Calculators.PortalCalculatorCommand;
@@ -14,6 +15,7 @@ import com.redslounge.r3dvanilla.events.EndermanEvent;
 import com.redslounge.r3dvanilla.events.SleepingEvent;
 import com.redslounge.r3dvanilla.managers.AfkManager;
 import com.redslounge.r3dvanilla.managers.DataManager;
+import com.redslounge.r3dvanilla.models.Note;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -23,15 +25,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
 
 public class Plugin extends JavaPlugin
 {
-    private FileConfiguration config, players;
+    private FileConfiguration config;
     private final File configFile = new File(getDataFolder(), "config.yml");
-    private final File playersFile = new File(getDataFolder(), "players.yml");
     private BukkitCommandManager commandManager;
 
     @Override
@@ -43,23 +47,19 @@ public class Plugin extends JavaPlugin
         }
         config = YamlConfiguration.loadConfiguration(configFile);
 
-        if(!playersFile.exists())
-        {
-            try
-            {
-                playersFile.createNewFile();
-            }
-            catch(IOException e)
-            {
-                this.getLogger().severe("Failed to create players.yml file. \n" + e.toString());
-            }
-        }
-        players = YamlConfiguration.loadConfiguration(playersFile);
+        DatabaseOptions options = DatabaseOptions.builder().mysql(
+                config.getString("databaseUser"),
+                config.getString("databasePass"),
+                config.getString("databaseName"),
+                config.getString("databaseHost")).build();
+        Database database = PooledDatabaseOptions.builder().options(options).createHikariDatabase();
+        DB.setGlobalDatabase(database);
 
         setupCommands();
         setupCommandCompletions();
         setupEvents();
         loadConfig();
+        loadPlayerData();
 
         new AfkManager(this);
     }
@@ -137,43 +137,47 @@ public class Plugin extends JavaPlugin
         dataManager.setPortalTag(config.getString("portalTag") + " ");
         dataManager.setItemCalculatorTag(config.getString("itemCalculatorTag") + " ");
         dataManager.setStackCalculatorTag(config.getString("stackCalculatorTag") + " ");
+    }
 
-        ConfigurationSection section = players.getConfigurationSection("");
+    private void loadPlayerData()
+    {
+        DataManager dataManager = DataManager.getInstance();
 
-        for(String playerSectionKey : section.getKeys(false))
+        ArrayList<DbRow> players;
+        ArrayList<DbRow> notes;
+
+        try
         {
-            UUID playerUUID = UUID.fromString(playerSectionKey);
-            boolean messagePing = players.getBoolean(playerUUID + ".messagePing");
-            List<String> notes = new ArrayList<>(players.getStringList(playerUUID + ".notes"));
-            Sound sound = Sound.valueOf(players.getString(playerUUID + ".messageSound"));
-            float pitch = (float) players.getDouble(playerUUID + ".messageSoundPitch");
-            RedPlayer redPlayer = new RedPlayer(playerUUID, messagePing, sound, pitch, notes);
+            players = new ArrayList<>(DB.getResults("SELECT * FROM players"));
+            notes = new ArrayList<>(DB.getResults("SELECT * FROM notes"));
+        }
+        catch(SQLException e)
+        {
+            this.getLogger().log(Level.SEVERE, "Failed to gather player info.\n" + e);
+            return;
+        }
+
+        for(DbRow player : players)
+        {
+            UUID playerUUID = UUID.fromString(player.getString("playerID"));
+            boolean messagePing = player.get("messagePing");
+            Sound messageSound = Sound.valueOf(player.getString("messageSound"));
+            float messageSoundPitch = player.getFloat("messageSoundPitch");
+            RedPlayer redPlayer = new RedPlayer(playerUUID, messagePing, messageSound, messageSoundPitch, new ArrayList<>());
 
             dataManager.getPlayers().put(playerUUID, redPlayer);
+        }
+
+        for(DbRow rowNote : notes)
+        {
+            Note note = new Note(rowNote.getInt("noteID"), UUID.fromString(rowNote.getString("playerID")), rowNote.getString("note"));
+            dataManager.getPlayers().get(note.getPlayerID()).getNotes().add(note);
         }
     }
 
     @Override
     public void onDisable()
     {
-        DataManager dataManager = DataManager.getInstance();
-
-        for(RedPlayer redPlayer : dataManager.getPlayers().values())
-        {
-            players.set(redPlayer.getPlayerUUID() + ".notes", redPlayer.getNotes());
-            players.set(redPlayer.getPlayerUUID() + ".messagePing", redPlayer.hasMessagePing());
-            players.set(redPlayer.getPlayerUUID() + ".messageSound", redPlayer.getMessageSound().name());
-            players.set(redPlayer.getPlayerUUID() + ".messageSoundPitch", redPlayer.getMessageSoundPitch());
-        }
-
-        try
-        {
-            players.save(playersFile);
-        }
-        catch(IOException e)
-        {
-            this.getServer().getLogger().severe("Failed to save players.yml");
-            this.getServer().getLogger().severe(e.toString());
-        }
+        DB.close();
     }
 }

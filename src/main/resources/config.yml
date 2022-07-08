@@ -10,7 +10,6 @@ sleepCooldown: 300
 sleepPercent: 51
 afkTimer: 300
 
-enableDatabase: true
 databaseUser: ''
 databasePass: ''
 databaseName: ''

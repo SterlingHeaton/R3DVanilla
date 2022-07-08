@@ -5,10 +5,16 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
+import co.aikar.idb.DB;
+import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.Utils;
+import com.redslounge.r3dvanilla.models.Note;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import org.bukkit.entity.Player;
+
+import java.sql.SQLException;
+import java.util.logging.Logger;
 
 @CommandAlias("note")
 public class NotesCommand extends BaseCommand
@@ -34,8 +40,19 @@ public class NotesCommand extends BaseCommand
             return;
         }
 
-        redPlayer.getNotes().add(Utils.buildMessage(args, 0));
-        player.sendMessage(Utils.color(tag + " &aSuccessfully added your note!"));
+        try
+        {
+            String noteString = Utils.buildMessage(args, 0);
+            long noteID = DB.executeInsert("INSERT INTO notes (playerID, note) VALUES (?, ?)", player.getUniqueId().toString(), noteString);
+
+            redPlayer.getNotes().add(new Note(noteID, player.getUniqueId(), noteString));
+            player.sendMessage(Utils.color(tag + " &aSuccessfully added your note!"));
+        }
+        catch(SQLException e)
+        {
+            player.sendMessage(Utils.color(tag + " &cFailed to add your note, try again and if it still fails let @Sterling#9999 know."));
+            System.out.println(e);
+        }
     }
 
     @Subcommand("delete")
@@ -51,8 +68,19 @@ public class NotesCommand extends BaseCommand
             return;
         }
 
-        redPlayer.getNotes().remove(noteNumber-1);
-        player.sendMessage(Utils.color(tag + " &aSuccessfully deleted your note!"));
+        Note note = redPlayer.getNotes().get(noteNumber-1);
+
+        try
+        {
+            DB.executeUpdate("DELETE from NOTES where noteID = ?", note.getNoteID());
+            redPlayer.getNotes().remove(noteNumber-1);
+            player.sendMessage(Utils.color(tag + " &aSuccessfully deleted your note!"));
+        }
+        catch(SQLException e)
+        {
+            player.sendMessage(Utils.color(tag + " &cFailed to delete your note, try again and if it still fails let @Sterling#9999 know."));
+            System.out.println(e);
+        }
     }
 
     @Subcommand("view")
@@ -71,7 +99,7 @@ public class NotesCommand extends BaseCommand
         player.sendMessage(Utils.color(tag + " &aPersonal Notes:"));
         for(int i = 0; i < redPlayer.getNotes().size(); i++)
         {
-            player.sendMessage(Utils.color("&a" + (i+1) + "&6. &7&o" + redPlayer.getNotes().get(i)));
+            player.sendMessage(Utils.color("&a" + (i+1) + "&6. &7&o" + redPlayer.getNotes().get(i).getNote()));
         }
     }
 }
