@@ -30,7 +30,7 @@ public class PortalCalculatorCommand extends BaseCommand
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
             player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(player.getLocation(), true)));
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aHub Side:&7 " + getNetherHubSide(player.getLocation())));
+            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&aNether Hub Location:&7 " + getNetherHubSide(player.getLocation())));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
@@ -63,7 +63,7 @@ public class PortalCalculatorCommand extends BaseCommand
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
             player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(location, true)));
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aHub Side:&7 " + getNetherHubSide(location)));
+            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&aNether Hub Location:&7 " + getNetherHubSide(location)));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
@@ -111,17 +111,51 @@ public class PortalCalculatorCommand extends BaseCommand
         {
             if(location.getX() > 0)
             {
-                return "East";
+                if(location.getZ() > 0)
+                {
+                    return "East Wing, South Side";
+                }
+                else
+                {
+                    return "East Wing, North Side";
+                }
             }
-            return "West";
+            else
+            {
+                if(location.getZ() > 0)
+                {
+                    return "West Wing, South Side";
+                }
+                else
+                {
+                    return "West Wing, North Side";
+                }
+            }
         }
         else
         {
             if(location.getZ() > 0)
             {
-                return "South";
+                if(location.getX() > 0)
+                {
+                    return "South Wing, East Side";
+                }
+                else
+                {
+                    return "South Wing, West Side";
+                }
             }
-            return "North";
+            else
+            {
+                if(location.getX() > 0)
+                {
+                    return "North Wing, East Side";
+                }
+                else
+                {
+                    return "North Wing, West Side";
+                }
+            }
         }
     }
 }

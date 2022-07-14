@@ -6,7 +6,7 @@
 
     <groupId>com.redslounge.maven</groupId>
     <artifactId>r3dvanilla</artifactId>
-    <version>4.0</version>
+    <version>4.0.1</version>
 
     <name>R3DVanilla</name>
     <description>Minecraft plugin that adds various features specifically designed for the Everneth server.</description>
