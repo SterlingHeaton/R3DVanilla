@@ -73,7 +73,7 @@ public class AfkManager
      */
     public static void setAfk(Player player, RedPlayer redPlayer, BukkitScheduler scheduledTask)
     {
-        Utils.broadcastMessage(Utils.getTeamColor(player) + player.getName() + " &7&ois now AFK!");
+        Utils.broadcastMessage(Utils.getChatColor(player.getUniqueId()) + player.getName() + " &7&ois now AFK!");
         player.setPlayerListName(Utils.color("&7" + player.getName() + " (afk)"));
         redPlayer.setAfk(true);
         scheduledTask.cancelTask(redPlayer.getAfkId());
@@ -89,7 +89,7 @@ public class AfkManager
      */
     public static void setUnafk(Player player, RedPlayer redPlayer, BukkitScheduler scheduledTask)
     {
-        Utils.broadcastMessage(Utils.getTeamColor(player) + player.getName() + " &7&ois back from being AFK!");
+        Utils.broadcastMessage(Utils.getChatColor(player.getUniqueId()) + player.getName() + " &7&ois back from being AFK!");
         player.setPlayerListName(player.getName());
         redPlayer.setAfk(false);
         scheduledTask.cancelTask(redPlayer.getAfkId());

@@ -41,18 +41,6 @@ public class Utils
         return note.toString();
     }
 
-    public static ChatColor getTeamColor(Player player)
-    {
-        try
-        {
-            return player.getScoreboard().getEntryTeam(player.getName()).getColor();
-        }
-        catch(NullPointerException e)
-        {
-            return ChatColor.GREEN;
-        }
-    }
-
     public static String getChatColor(UUID playerUUID)
     {
         LuckPerms api = LuckPermsProvider.get();

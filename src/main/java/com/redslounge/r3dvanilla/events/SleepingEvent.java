@@ -54,12 +54,12 @@ public class SleepingEvent implements Listener
 
             if(dataManager.getSleepingPlayers().size() >= neededPlayers)
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(event.getPlayer()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&a" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getChatColor(event.getPlayer().getUniqueId()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&a" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> setDay(event.getPlayer().getWorld()), 20 * 7);
             }
             else
             {
-                plugin.getServer().broadcastMessage(Utils.color(Utils.getTeamColor(event.getPlayer()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&c" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
+                plugin.getServer().broadcastMessage(Utils.color(Utils.getChatColor(event.getPlayer().getUniqueId()) + event.getPlayer().getName() + " &7&ois now sleeping&6. &8[&c" + dataManager.getSleepingPlayers().size() + "&7/&a" + neededPlayers + "&8]"));
             }
         }
         else
@@ -103,7 +103,7 @@ public class SleepingEvent implements Listener
 
     private TextComponent buildInteractiveMessage(Player player)
     {
-        TextComponent message = new TextComponent(Utils.color(Utils.getTeamColor(player) + player.getName() + " &7&ois now sleeping. " + "&c[CLICK TO CANCEL]"));
+        TextComponent message = new TextComponent(Utils.color(Utils.getChatColor(player.getUniqueId()) + player.getName() + " &7&ois now sleeping. " + "&c[CLICK TO CANCEL]"));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/cancelsleep"));
 
         return message;

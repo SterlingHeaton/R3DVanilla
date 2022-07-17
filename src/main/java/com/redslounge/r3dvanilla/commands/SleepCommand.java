@@ -56,7 +56,7 @@ public class SleepCommand extends BaseCommand
             sleepingPlayer.setGameMode(GameMode.SURVIVAL);
             sleepingPlayer.damage(0);
             sleepingPlayer.setGameMode(originalGameMode);
-            Bukkit.broadcastMessage(Utils.color(tag + " " + Utils.getTeamColor(player) + player.getName() + " &cdoesn't want people to sleep, enabling majority vote."));
+            Bukkit.broadcastMessage(Utils.color(tag + " " + Utils.getChatColor(player.getUniqueId()) + player.getName() + " &cdoesn't want people to sleep, enabling majority vote."));
         }
     }
 }
