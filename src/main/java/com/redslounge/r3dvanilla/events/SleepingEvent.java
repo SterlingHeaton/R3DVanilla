@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 public class SleepingEvent implements Listener
 {
     private final Plugin plugin;
+    private final String tag = "&8[&6Sleep&8]";
 
     public SleepingEvent(Plugin plugin)
     {
@@ -37,6 +38,13 @@ public class SleepingEvent implements Listener
         }
 
         dataManager.getSleepingPlayers().add(event.getPlayer());
+
+        if(dataManager.isSleepVote() && dataManager.getSleepCanceler().equals(event.getPlayer().getUniqueId()))
+        {
+            dataManager.setSleepVote(false);
+            Utils.broadcastMessage(Utils.color(tag + " &aVote canceled. &7&oOriginal canceler is now sleeping."));
+            dataManager.setSleepCanceler(null);
+        }
 
         if(dataManager.isSleepVote())
         {

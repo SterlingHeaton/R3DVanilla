@@ -42,6 +42,7 @@ public class SleepCommand extends BaseCommand
             return;
         }
 
+        dataManager.setSleepCanceler(player.getUniqueId());
         dataManager.setSleepVote(true);
         plugin.getServer().getScheduler().cancelTask(dataManager.getSleepingID());
 

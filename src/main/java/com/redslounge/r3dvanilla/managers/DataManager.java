@@ -42,6 +42,28 @@ public class DataManager
     private String itemCalculatorTag;
     private String stackCalculatorTag;
 
+    private UUID sleepCanceler;
+
+    public static DataManager getDataManager()
+    {
+        return dataManager;
+    }
+
+    public static void setDataManager(DataManager dataManager)
+    {
+        DataManager.dataManager = dataManager;
+    }
+
+    public UUID getSleepCanceler()
+    {
+        return sleepCanceler;
+    }
+
+    public void setSleepCanceler(UUID sleepCanceler)
+    {
+        this.sleepCanceler = sleepCanceler;
+    }
+
     public String getItemCalculatorTag()
     {
         return itemCalculatorTag;
