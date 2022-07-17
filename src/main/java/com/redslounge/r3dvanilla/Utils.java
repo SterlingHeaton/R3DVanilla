@@ -1,8 +1,18 @@
 package com.redslounge.r3dvanilla;
 
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.group.Group;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
+import net.luckperms.api.node.NodeType;
+import net.luckperms.api.node.types.PrefixNode;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import java.util.Collection;
+import java.util.UUID;
 
 public class Utils
 {
@@ -41,6 +51,19 @@ public class Utils
         {
             return ChatColor.GREEN;
         }
+    }
+
+    public static String getChatColor(UUID playerUUID)
+    {
+        LuckPerms api = LuckPermsProvider.get();
+
+        User user = api.getUserManager().getUser(playerUUID);
+        Group group = api.getGroupManager().getGroup(user.getPrimaryGroup());
+        String nodeKeys = group.getNodes(NodeType.PREFIX).toArray()[0].toString();
+        String prefixSection = nodeKeys.split("prefix")[1];
+        String prefixColor = prefixSection.split("&")[1];
+
+        return "&" + prefixColor.substring(0, 1);
     }
 
     public static void broadcastMessage(String message)
