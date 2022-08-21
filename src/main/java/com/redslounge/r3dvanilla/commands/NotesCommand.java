@@ -70,7 +70,7 @@ public class NotesCommand extends BaseCommand
 
         try
         {
-            DB.executeUpdate("DELETE from NOTES where noteID = ?", note.getNoteID());
+            DB.executeUpdate("DELETE FROM notes WHERE noteID = ?", note.getNoteID());
             redPlayer.getNotes().remove(noteNumber - 1);
             player.sendMessage(Utils.color(tag + " &aSuccessfully deleted your note!"));
         }

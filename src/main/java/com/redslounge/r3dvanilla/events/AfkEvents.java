@@ -77,10 +77,6 @@ public class AfkEvents implements Listener
         redPlayer.setGhostAfk(false);
         plugin.getServer().getScheduler().cancelTask(redPlayer.getAfkId());
         redPlayer.setAfkId(-1);
-
-        if(dataManager.getAfkPlayers().contains(player))
-        {
-            dataManager.getSleepingPlayers().remove(player);
-        }
+        dataManager.getAfkPlayers().remove(player);
     }
 }
