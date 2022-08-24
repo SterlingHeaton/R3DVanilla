@@ -74,6 +74,7 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new ItemCalculatorCommand());
         commandManager.registerCommand(new StackCalculatorCommand());
         commandManager.registerCommand(new LogoutCommand());
+        commandManager.registerCommand(new WikiCommand());
     }
 
     private void setupCommandCompletions()
