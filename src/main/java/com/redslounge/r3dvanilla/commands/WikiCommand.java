@@ -55,7 +55,7 @@ public class WikiCommand extends BaseCommand
         String resultName = elements.get(0).getElementsByClass("unified-search__result__title").get(0).text();
         String resultUrl = elements.get(0).getElementsByClass("unified-search__result__title").get(0).attr("href");
 
-        TextComponent result = new TextComponent(Utils.color(chatTag + "&aFound &6" + resultName + "&a. &7&oClick Here to go to the wiki."));
+        TextComponent result = new TextComponent(Utils.color(chatTag + "&aFound an article titled: &6" + resultName + " &7&o(click)"));
         result.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, resultUrl));
 
         player.spigot().sendMessage(result);
