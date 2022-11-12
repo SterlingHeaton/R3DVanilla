@@ -32,15 +32,8 @@ public class DataManager
     private boolean defaultMessagePing;
     private boolean sleepVote;
 
-    private String messageTag;
-    private String replyTag;
-    private String messagePingTag;
     private Sound defaultMessageSound;
     private float defaultMessageSoundPitch;
-
-    private String portalTag;
-    private String itemCalculatorTag;
-    private String stackCalculatorTag;
 
     private UUID sleepCanceler;
 
@@ -64,51 +57,6 @@ public class DataManager
         this.sleepCanceler = sleepCanceler;
     }
 
-    public String getItemCalculatorTag()
-    {
-        return itemCalculatorTag;
-    }
-
-    public void setItemCalculatorTag(String itemCalculatorTag)
-    {
-        this.itemCalculatorTag = itemCalculatorTag;
-    }
-
-    public String getStackCalculatorTag()
-    {
-        return stackCalculatorTag;
-    }
-
-    public void setStackCalculatorTag(String stackCalculatorTag)
-    {
-        this.stackCalculatorTag = stackCalculatorTag;
-    }
-
-    public String getPortalTag()
-    {
-        return portalTag;
-    }
-
-    public void setPortalTag(String portalTag)
-    {
-        this.portalTag = portalTag;
-    }
-
-    public void setMessageTag(String messageTag)
-    {
-        this.messageTag = messageTag;
-    }
-
-    public void setReplyTag(String replyTag)
-    {
-        this.replyTag = replyTag;
-    }
-
-    public void setMessagePingTag(String messagePingTag)
-    {
-        this.messagePingTag = messagePingTag;
-    }
-
     public Sound getDefaultMessageSound()
     {
         return defaultMessageSound;
@@ -127,21 +75,6 @@ public class DataManager
     public void setDefaultMessageSoundPitch(float defaultMessageSoundPitch)
     {
         this.defaultMessageSoundPitch = defaultMessageSoundPitch;
-    }
-
-    public String getReplyTag()
-    {
-        return replyTag;
-    }
-
-    public String getMessagePingTag()
-    {
-        return messagePingTag;
-    }
-
-    public String getMessageTag()
-    {
-        return messageTag;
     }
 
     public HashMap<UUID, RedPlayer> getPlayers()

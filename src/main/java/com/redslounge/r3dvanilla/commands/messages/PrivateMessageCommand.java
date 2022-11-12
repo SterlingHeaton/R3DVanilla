@@ -8,6 +8,7 @@ import co.aikar.commands.annotation.Syntax;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -38,7 +39,7 @@ public class PrivateMessageCommand extends BaseCommand
         // Test to see if inputs are correct.
         if(targetPlayer == null)
         {
-            player.sendMessage(Utils.color(dataManager.getMessageTag() + "&cPlayer offline or misspelled!"));
+            player.sendMessage(Utils.color(ChatTags.MESSAGES.getTag() + "&cPlayer offline or misspelled!"));
             return;
         }
 

@@ -3,7 +3,7 @@ package com.redslounge.r3dvanilla.commands.Calculators;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.managers.DataManager;
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -25,20 +25,18 @@ public class PortalCalculatorCommand extends BaseCommand
     @CommandCompletion("@nothing")
     public void onPortal(Player player)
     {
-        DataManager dataManager = DataManager.getInstance();
-
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(player.getLocation(), true)));
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&aNether Hub Location:&7 " + getNetherHubSide(player.getLocation())));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&4Nether &aportal location:&7 " + formatLocation(player.getLocation(), true)));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&aNether Hub Location:&7 " + getNetherHubSide(player.getLocation())));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&2Overworld &aportal location:&7 " + formatLocation(player.getLocation(), false)));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&2Overworld &aportal location:&7 " + formatLocation(player.getLocation(), false)));
         }
         else
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&cThis command can only be used in the Overworld or Nether!"));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&cThis command can only be used in the Overworld or Nether!"));
         }
     }
 
@@ -54,7 +52,6 @@ public class PortalCalculatorCommand extends BaseCommand
     @CommandCompletion("@nothing")
     public void onLocationPortal(Player player, int x, int y)
     {
-        DataManager dataManager = DataManager.getInstance();
         Location location = player.getLocation();
 
         location.setX(x);
@@ -62,16 +59,16 @@ public class PortalCalculatorCommand extends BaseCommand
 
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&4Nether &aportal location:&7 " + formatLocation(location, true)));
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&aNether Hub Location:&7 " + getNetherHubSide(location)));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&4Nether &aportal location:&7 " + formatLocation(location, true)));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&aNether Hub Location:&7 " + getNetherHubSide(location)));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&2Overworld &aportal location:&7 " + formatLocation(location, false)));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&2Overworld &aportal location:&7 " + formatLocation(location, false)));
         }
         else
         {
-            player.sendMessage(Utils.color(dataManager.getPortalTag() + "&cThis command can only be used in the Overworld or Nether!"));
+            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&cThis command can only be used in the Overworld or Nether!"));
         }
     }
 

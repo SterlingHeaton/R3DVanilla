@@ -5,7 +5,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.managers.DataManager;
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
 import org.bukkit.entity.Player;
 
 /**
@@ -27,12 +27,9 @@ public class ItemCalculatorCommand extends BaseCommand
     @CommandCompletion("1|16|64 @nothing")
     public void onItemCalculator(Player player, int stackAmount, String calculation)
     {
-        // Grab the data manager and run tests to see if the command is valid.
-        DataManager dataManager = DataManager.getInstance();
-
         if(calculation.isEmpty())
         {
-            player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&cDidn't input a calculation for the calculator."));
+            player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&cDidn't input a calculation for the calculator."));
             return;
         }
 
@@ -78,13 +75,13 @@ public class ItemCalculatorCommand extends BaseCommand
                 }
                 catch(NumberFormatException e)
                 {
-                    player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&cInvalid format."));
+                    player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&cInvalid format."));
                     return;
                 }
             }
         }
 
         // Send the player the item amount.
-        player.sendMessage(Utils.color(dataManager.getItemCalculatorTag() + "&7" + calculation + " &ais equal to: &6" + total));
+        player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&7" + calculation + " &ais equal to: &6" + total));
     }
 }

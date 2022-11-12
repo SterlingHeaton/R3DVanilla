@@ -3,6 +3,7 @@ package com.redslounge.r3dvanilla.events;
 import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.World;
@@ -15,7 +16,6 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 public class SleepingEvent implements Listener
 {
     private final Plugin plugin;
-    private final String tag = "&8[&6Sleep&8]";
 
     public SleepingEvent(Plugin plugin)
     {
@@ -42,7 +42,7 @@ public class SleepingEvent implements Listener
         if(dataManager.isSleepVote() && dataManager.getSleepCanceler().equals(event.getPlayer().getUniqueId()))
         {
             dataManager.setSleepVote(false);
-            Utils.broadcastMessage(Utils.color(tag + " &aVote canceled. &7&oOriginal canceler is now sleeping."));
+            Utils.broadcastMessage(Utils.color(ChatTags.SLEEP.getTag() + " &aVote canceled. &7&oOriginal canceler is now sleeping."));
             dataManager.setSleepCanceler(null);
         }
 

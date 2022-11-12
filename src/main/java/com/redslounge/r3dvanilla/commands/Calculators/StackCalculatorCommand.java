@@ -5,7 +5,7 @@ import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
-import com.redslounge.r3dvanilla.managers.DataManager;
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
 import org.bukkit.entity.Player;
 
 /**
@@ -27,12 +27,9 @@ public class StackCalculatorCommand extends BaseCommand
     @CommandCompletion("1|16|64 @nothing")
     public void onStackCalculator(Player player, int stack, int amount)
     {
-        // Grab the dataManager and run test to see if the command was run correctly.
-        DataManager dataManager = DataManager.getInstance();
-
         if(amount <= 0)
         {
-            player.sendMessage(Utils.color(dataManager.getStackCalculatorTag() + "&cInput needs to be above 0."));
+            player.sendMessage(Utils.color(ChatTags.STACK_CALCULATOR.getTag() + "&cInput needs to be above 0."));
             return;
         }
 
@@ -47,9 +44,9 @@ public class StackCalculatorCommand extends BaseCommand
         amount = amount / 27;
 
         // Send the player a message on how many shulker boxes, stacks, and items are in the item amount inputed.
-        player.sendMessage(Utils.color(dataManager.getStackCalculatorTag() + "&7" + totalItems + " &ais equal to:"));
-        player.sendMessage(Utils.color(dataManager.getStackCalculatorTag() + "&aShulker Boxes: &6" + amount));
-        player.sendMessage(Utils.color(dataManager.getStackCalculatorTag() + "&aStacks: &6" + stacks));
-        player.sendMessage(Utils.color(dataManager.getStackCalculatorTag() + "&aItems: &6" + items));
+        player.sendMessage(Utils.color(ChatTags.STACK_CALCULATOR.getTag() + "&7" + totalItems + " &ais equal to:"));
+        player.sendMessage(Utils.color(ChatTags.STACK_CALCULATOR.getTag() + "&aShulker Boxes: &6" + amount));
+        player.sendMessage(Utils.color(ChatTags.STACK_CALCULATOR.getTag() + "&aStacks: &6" + stacks));
+        player.sendMessage(Utils.color(ChatTags.STACK_CALCULATOR.getTag() + "&aItems: &6" + items));
     }
 }

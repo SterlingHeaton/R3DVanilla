@@ -127,12 +127,6 @@ public class Plugin extends JavaPlugin
         dataManager.setAfkTimer(config.getInt("afkTimer"));
         dataManager.setDefaultMessageSound(Sound.valueOf(config.getString("defaultMessageSound")));
         dataManager.setDefaultMessageSoundPitch((float) config.getDouble("defaultMessageSoundPitch"));
-        dataManager.setMessageTag(config.getString("messageTag") + " ");
-        dataManager.setReplyTag(config.getString("replyTag") + " ");
-        dataManager.setMessagePingTag(config.getString("messagePingTag") + " ");
-        dataManager.setPortalTag(config.getString("portalTag") + " ");
-        dataManager.setItemCalculatorTag(config.getString("itemCalculatorTag") + " ");
-        dataManager.setStackCalculatorTag(config.getString("stackCalculatorTag") + " ");
     }
 
     private void loadPlayerData()
