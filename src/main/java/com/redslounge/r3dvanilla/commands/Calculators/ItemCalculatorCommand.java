@@ -6,6 +6,7 @@ import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.Default;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.entity.Player;
 
 /**
@@ -29,7 +30,7 @@ public class ItemCalculatorCommand extends BaseCommand
     {
         if(calculation.isEmpty())
         {
-            player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&cDidn't input a calculation for the calculator."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.ITEM_CALCULATOR, RedMessages.ITEM_CALC_NO_INPUT_ERROR, ""));
             return;
         }
 
@@ -75,13 +76,13 @@ public class ItemCalculatorCommand extends BaseCommand
                 }
                 catch(NumberFormatException e)
                 {
-                    player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&cInvalid format."));
+                    player.sendMessage(Utils.getCommandReply(ChatTags.ITEM_CALCULATOR, RedMessages.ITEM_CALC_INVALID_FORMAT_ERROR, ""));
                     return;
                 }
             }
         }
 
         // Send the player the item amount.
-        player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + "&7" + calculation + " &ais equal to: &6" + total));
+        player.sendMessage(Utils.color(ChatTags.ITEM_CALCULATOR.getTag() + " &7" + calculation + " &ais equal to: &6" + total));
     }
 }

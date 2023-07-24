@@ -8,6 +8,7 @@ import com.redslounge.r3dvanilla.Plugin;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -32,13 +33,13 @@ public class SleepCommand extends BaseCommand
 
         if(dataManager.getSleepingPlayers().isEmpty())
         {
-            player.sendMessage(Utils.color(ChatTags.SLEEP.getTag() + " &cNo one is sleeping you sussy baka."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.SLEEP, RedMessages.SLEEP_NONE_ERROR, ""));
             return;
         }
 
         if(dataManager.isSleepVote())
         {
-            player.sendMessage(Utils.color(ChatTags.SLEEP.getTag() + " &cMajority vote enabled, can't kick people out of bed."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.SLEEP, RedMessages.SLEEP_MAJORITY_VOTE, ""));
             return;
         }
 
@@ -56,7 +57,9 @@ public class SleepCommand extends BaseCommand
             sleepingPlayer.setGameMode(GameMode.SURVIVAL);
             sleepingPlayer.damage(0);
             sleepingPlayer.setGameMode(originalGameMode);
-            Bukkit.broadcastMessage(Utils.color(ChatTags.SLEEP.getTag() + " " + Utils.getChatColor(player.getUniqueId()) + player.getName() + " &cdoesn't want people to sleep, enabling majority vote."));
+            Bukkit.broadcastMessage(Utils.color(String.format("%s %s &cDoesn't want people to sleep, enabling majority vote.",
+                    ChatTags.SLEEP.getTag(),
+                    Utils.getChatColor(player.getUniqueId()) + player.getName())));
         }
     }
 }

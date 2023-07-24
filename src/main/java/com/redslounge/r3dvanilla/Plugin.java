@@ -75,6 +75,7 @@ public class Plugin extends JavaPlugin
         commandManager.registerCommand(new StackCalculatorCommand());
         commandManager.registerCommand(new LogoutCommand());
         commandManager.registerCommand(new WikiCommand());
+        commandManager.registerCommand(new SlimeChunkCommand());
     }
 
     private void setupCommandCompletions()

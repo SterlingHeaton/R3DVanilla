@@ -8,6 +8,7 @@ import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -36,7 +37,7 @@ public class ReplyCommand extends BaseCommand
         // Test to see if another player messaged this player and if they're online.
         if(redPlayer.getReplyTo() == null)
         {
-            player.sendMessage(Utils.color(ChatTags.REPLY.getTag() + "&cNo one has messaged you!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.REPLY, RedMessages.REPLY_NO_REPLIER_ERROR, ""));
             return;
         }
 
@@ -45,7 +46,7 @@ public class ReplyCommand extends BaseCommand
 
         if(targetPlayer == null)
         {
-            player.sendMessage(Utils.color(ChatTags.REPLY.getTag() + "&cPlayer isn't online!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.REPLY, RedMessages.PLAYER_OFFLINE_ERROR, ""));
             return;
         }
 

@@ -7,6 +7,7 @@ import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
@@ -40,7 +41,7 @@ public class MessagePingCommand extends BaseCommand
             {
                 DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?", false, redPlayer.getPlayerUUID().toString());
                 redPlayer.setMessagePing(false);
-                player.sendMessage(Utils.color(ChatTags.MESSAGE_PING.getTag() + "&cDisabled!"));
+                player.sendMessage(Utils.getCommandReply(ChatTags.MESSAGE_PING, RedMessages.DISABLED, ""));
             }
             catch(SQLException e)
             {
@@ -53,7 +54,7 @@ public class MessagePingCommand extends BaseCommand
             {
                 DB.executeUpdate("UPDATE players SET messagePing = ? WHERE playerID = ?", true, redPlayer.getPlayerUUID().toString());
                 redPlayer.setMessagePing(true);
-                player.sendMessage(Utils.color(ChatTags.MESSAGE_PING.getTag() + "&aEnabled!"));
+                player.sendMessage(Utils.getCommandReply(ChatTags.MESSAGE_PING, RedMessages.ENABLED, ""));
             }
             catch(SQLException e)
             {
@@ -86,13 +87,13 @@ public class MessagePingCommand extends BaseCommand
         }
         catch(IllegalArgumentException e)
         {
-            player.sendMessage(Utils.color(ChatTags.MESSAGE_PING.getTag() + "&cThat isn't a valid sound name!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.MESSAGE_PING, RedMessages.PING_SOUND_ERROR, ""));
             return;
         }
 
         if(pitch < 0 || pitch > 2)
         {
-            player.sendMessage(Utils.color(ChatTags.MESSAGE_PING.getTag() + "&cPitch must be between 0-2!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.MESSAGE_PING, RedMessages.PING_PITCH_ERROR, ""));
             return;
         }
 
@@ -104,7 +105,7 @@ public class MessagePingCommand extends BaseCommand
             redPlayer.setMessageSound(pingSound);
             redPlayer.setMessageSoundPitch(pitch);
 
-            player.sendMessage(Utils.color(ChatTags.MESSAGE_PING.getTag() + "&aUpdated sound!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.MESSAGE_PING, RedMessages.PING_SUCCESS, ""));
         }
         catch(SQLException e)
         {

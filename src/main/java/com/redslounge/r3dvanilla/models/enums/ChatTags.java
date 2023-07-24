@@ -10,7 +10,8 @@ public enum ChatTags
     STACK_CALCULATOR("&8[&6StackCalc&8]"),
     WIKI("&8[&6Wiki&8]"),
     SLEEP("&8[&6Sleep&8]"),
-    NOTES("&8[&6Notes&8]");
+    NOTES("&8[&6Notes&8]"),
+    SLIMECHUNK("&8[&6Slime Chunks&8]");
 
     private final String tag;
 

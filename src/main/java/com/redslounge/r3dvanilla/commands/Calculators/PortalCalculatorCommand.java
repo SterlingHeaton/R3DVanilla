@@ -4,6 +4,7 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import com.redslounge.r3dvanilla.Utils;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -27,16 +28,25 @@ public class PortalCalculatorCommand extends BaseCommand
     {
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&4Nether &aportal location:&7 " + formatLocation(player.getLocation(), true)));
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&aNether Hub Location:&7 " + getNetherHubSide(player.getLocation())));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_NETHER_SUCCESS,
+                    "&7" + formatLocation(player.getLocation(), true)));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_NETHER_HUB,
+                    "&7" + getNetherHubSide(player.getLocation())));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&2Overworld &aportal location:&7 " + formatLocation(player.getLocation(), false)));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_OVERWORLD_SUCCESS,
+                    "&7" + formatLocation(player.getLocation(), false)));
         }
         else
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&cThis command can only be used in the Overworld or Nether!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.PORTAL_CALCULATOR, RedMessages.PORTAL_WRONG_DIMENSION_ERROR, ""));
         }
     }
 
@@ -45,30 +55,39 @@ public class PortalCalculatorCommand extends BaseCommand
      *
      * @param player Automatic input from the player who executed the command
      * @param x      Input for the x coordinate
-     * @param y      Input for the z coordinate
+     * @param z      Input for the z coordinate
      */
     @Subcommand("location")
     @Syntax("<X> <Z>")
     @CommandCompletion("@nothing")
-    public void onLocationPortal(Player player, int x, int y)
+    public void onLocationPortal(Player player, int x, int z)
     {
         Location location = player.getLocation();
 
         location.setX(x);
-        location.setY(y);
+        location.setZ(z);
 
         if(player.getWorld().getEnvironment().equals(World.Environment.NORMAL))
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&4Nether &aportal location:&7 " + formatLocation(location, true)));
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&aNether Hub Location:&7 " + getNetherHubSide(location)));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_NETHER_SUCCESS,
+                    "&7" + formatLocation(location, true)));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_NETHER_HUB,
+                    "&7" + getNetherHubSide(location)));
         }
         else if(player.getWorld().getEnvironment().equals(World.Environment.NETHER))
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&2Overworld &aportal location:&7 " + formatLocation(location, false)));
+            player.sendMessage(Utils.getCommandReply(
+                    ChatTags.PORTAL_CALCULATOR,
+                    RedMessages.PORTAL_OVERWORLD_SUCCESS,
+                    "&7" + formatLocation(location, false)));
         }
         else
         {
-            player.sendMessage(Utils.color(ChatTags.PORTAL_CALCULATOR.getTag() + "&cThis command can only be used in the Overworld or Nether!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.PORTAL_CALCULATOR, RedMessages.PORTAL_WRONG_DIMENSION_ERROR, ""));
         }
     }
 

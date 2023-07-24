@@ -1,5 +1,7 @@
 package com.redslounge.r3dvanilla;
 
+import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
@@ -53,5 +55,10 @@ public class Utils
     public static void broadcastMessage(String message)
     {
         Bukkit.broadcastMessage(color(message));
+    }
+
+    public static String getCommandReply(ChatTags tag, RedMessages message, String extra)
+    {
+        return Utils.color(String.format("%s %s %s", tag.getTag(), message.message(), extra));
     }
 }

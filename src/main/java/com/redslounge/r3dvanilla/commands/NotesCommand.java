@@ -11,6 +11,7 @@ import com.redslounge.r3dvanilla.managers.DataManager;
 import com.redslounge.r3dvanilla.models.Note;
 import com.redslounge.r3dvanilla.models.RedPlayer;
 import com.redslounge.r3dvanilla.models.enums.ChatTags;
+import com.redslounge.r3dvanilla.models.enums.RedMessages;
 import org.bukkit.entity.Player;
 
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class NotesCommand extends BaseCommand
     @Default
     public void onMainCommand(Player player)
     {
-        player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cInvalid syntax: &7&o/note <add | delete | view>"));
+        player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_SYNTAX_ERROR, ""));
     }
 
     @Subcommand("add")
@@ -33,7 +34,7 @@ public class NotesCommand extends BaseCommand
 
         if(redPlayer.getNotes().size() >= dataManager.getNoteLimit())
         {
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cYou have run out of room for more notes."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_MAX_NOTES_ERROR, ""));
             return;
         }
 
@@ -43,11 +44,11 @@ public class NotesCommand extends BaseCommand
             long noteID = DB.executeInsert("INSERT INTO notes (playerID, note) VALUES (?, ?)", player.getUniqueId().toString(), noteString);
 
             redPlayer.getNotes().add(new Note(noteID, player.getUniqueId(), noteString));
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &aSuccessfully added your note!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_ADD_SUCCESS, ""));
         }
         catch(SQLException e)
         {
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cFailed to add your note, try again and if it still fails let @Sterling#9999 know."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_ADD_ERROR, ""));
             System.out.println(e);
         }
     }
@@ -61,7 +62,7 @@ public class NotesCommand extends BaseCommand
 
         if(redPlayer.getNotes().size() < noteNumber || noteNumber < 0)
         {
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cThat note number isn't associated with any of your notes."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_UNKNOWN_NOTE_ID_ERROR, ""));
             return;
         }
 
@@ -71,11 +72,11 @@ public class NotesCommand extends BaseCommand
         {
             DB.executeUpdate("DELETE FROM notes WHERE noteID = ?", note.getNoteID());
             redPlayer.getNotes().remove(noteNumber - 1);
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &aSuccessfully deleted your note!"));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_DEL_SUCCESS, ""));
         }
         catch(SQLException e)
         {
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cFailed to delete your note, try again and if it still fails let @Sterling#9999 know."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_DEL_ERROR, ""));
             System.out.println(e);
         }
     }
@@ -89,11 +90,11 @@ public class NotesCommand extends BaseCommand
 
         if(redPlayer.getNotes().isEmpty())
         {
-            player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &cNo notes to display."));
+            player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_NO_NOTES_ERROR, ""));
             return;
         }
 
-        player.sendMessage(Utils.color(ChatTags.NOTES.getTag() + " &aPersonal Notes:"));
+        player.sendMessage(Utils.getCommandReply(ChatTags.NOTES, RedMessages.NOTES_PERSONAL, ""));
         for(int i = 0; i < redPlayer.getNotes().size(); i++)
         {
             player.sendMessage(Utils.color("&a" + (i + 1) + "&6. &7&o" + redPlayer.getNotes().get(i).getNote()));
